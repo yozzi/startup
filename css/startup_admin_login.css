@@ -1,0 +1,21 @@
+body{
+background:orangered !important;
+}
+#login{
+padding: 25px 0 0 0;
+}
+h1 a {
+background-image:url(wp-content/plugins/startup/img/startup_logo.png) !important;
+background-size:166px !important;
+width:172px !important;
+height:172px !important;
+}
+a{
+color:white !important;
+}
+.login .message {
+border-left:none;
+}
+#login_error a{
+color: black !important;
+}
