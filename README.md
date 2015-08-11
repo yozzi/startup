@@ -7,7 +7,7 @@ What I do:
 
 * Clean WordPress backend theme colors up
 * Clean gui things up by hiding some features
-* Change logo for StartUp logo, wherease I don't hide WordPress existence
+* Change logo for StartUp logo, although I don't hide WordPress existence
 * A lot of other things to come
 
 Plugin designed to work with StartUp Reloaded WordPress theme only.
