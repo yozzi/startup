@@ -1,13 +1,13 @@
-StartUp Reloaded
+StartUp
 ===
 
-Hi. I'm a WordPress starter theme for developpers called `StartUp reloaded`. My goal is to speed up the process of developping a WordPress theme for developpers as well as web designers.
+Hi. I'm a WordPress plugin called `StartUp`. My goal is to simplify WordPress backend to suit customer's need.
 
-I'm fully loaded with all the things you put together everytime you create a new theme:
+What I do:
 
-* Based on _s
-* Bootstrap
-* Font Awesome
-* Options Frameworks
-* CMB2
-* A bunch of additionnal plugins for custom post types
+* Clean WordPress backend theme colors up
+* Clean gui things up by hiding some features
+* Change logo for StartUp logo, wherease I don't hide WordPress existence
+* A lot of other things to come
+
+Plugin designed to work with StartUp Reloaded Wordpress theme only.
