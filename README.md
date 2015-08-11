@@ -10,4 +10,4 @@ What I do:
 * Change logo for StartUp logo, although I don't hide WordPress existence
 * A lot of other things to come
 
-Plugin designed to work with StartUp Reloaded WordPress theme only.
+Plugin designed to work with StartUp Reloaded WordPress theme.
