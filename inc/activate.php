@@ -30,10 +30,10 @@
 //Configurer les options : Français / 30 / Photos / All / Uncheck / Uncheck
 
 //Pour activer Commentaires
-function startup_com(){
+//function startup_com(){
 //add_menu_page( 'StartUp Commentaires', 'Commentaires', 'read', 'edit-comments.php', '' ); //Activer
 //add_menu_page( 'StartUp Commentaires', 'Commentaires', 'read', 'startup-com', 'startup_com_init' ); //Désactiver
-}
+//}
 
 //Pour activer Google Maps
 
