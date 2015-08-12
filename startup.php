@@ -28,13 +28,23 @@ add_action('login_head', 'yozz_custom_login_style');
 
 function yozz_custom_admin_head() {
 	if( !current_user_can( 'manage_options' ) ) {
-  	echo '<style type="text/css">';
-    include 'css/startup_admin.css';
-    echo '</style>';
+        echo '<style type="text/css">';
+        include 'css/startup_admin.css';
+        echo '</style>';
     }
 }
 
 add_action('admin_head', 'yozz_custom_admin_head');
+
+/************************** Style de la zone admin pour tout le monde */
+
+function yozz_custom_admin_head_everyone() {
+    echo '<style type="text/css">';
+    include 'css/startup_admin_everyone.css';
+    echo '</style>';
+}
+
+add_action('admin_head', 'yozz_custom_admin_head_everyone');
 
 /************************** Rediriger vers une autre page au login */
 

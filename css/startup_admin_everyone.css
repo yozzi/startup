@@ -1,0 +1,8 @@
+/*CMB2*/
+.cmb-repeat .cmb-row, .cmb-repeatable-group .cmb-row{
+    border-bottom: 0 !important;
+}
+
+.cmb-repeat .cmb-td, .cmb-repeatable-group .cmb-row {
+    padding-bottom: 0 !important;
+}
