@@ -89,96 +89,23 @@ add_action('admin_menu', 'startup_com');
 
 function add_menu_icon_com(){
 ?>
-
 <style>
 #toplevel_page_startup-com a{
 color: #555;
 }
 #toplevel_page_startup-com .dashicons-admin-generic::before {
-content: "\f122";
+content: "\f101";
 color: #555 !important;
 }
 
 #toplevel_page_edit-comments .dashicons-admin-generic::before {
-content: "\f122";
+content: "\f101";
 }
 </style>
 
 <?php
 }
 add_action( 'admin_head', 'add_menu_icon_com' );
-
-//Facebook
-
-function startup_fb(){
-add_menu_page( 'StartUp Facebook', 'Facebook', 'read', 'startup-fb', 'startup_fb_init' );
-}
-
-function startup_fb_init(){
-echo "
-<div class='wrap'>
-<h2>Facebook</h2>
-<p>Vous avez une page Facebook et vous aimeriez que les mises à jours, posts et autres activités de votre site web soient automatiquement envoyés à tous vos abonnés?</p>
-<p>Contactez-nous pour activer l'option <strong>Facebook</strong></p>
-<a class='button-primary' href='http://yozz.net/#contact-anchor' title='yozz.net'>Contactez yozz.net</a>
-</div>
-";
-}
-
-add_action('admin_menu', 'startup_fb');
-
-function add_menu_icon_facebook(){
-?>
-
-<style>
-#toplevel_page_startup-fb a{
-color: #555;
-}
-#toplevel_page_startup-fb .dashicons-admin-generic::before {
-content: "\f305";
-color: #555 !important;
-}
-</style>
-
-<?php
-}
-add_action( 'admin_head', 'add_menu_icon_facebook' );
-
-//Twitter
-
-function startup_tw(){
-add_menu_page( 'StartUp Twitter', 'Twitter', 'read', 'startup-tw', 'startup_tw_init' );
-}
-
-function startup_tw_init(){
-echo "
-<div class='wrap'>
-<h2>Twitter</h2>
-<p>Vous avez un compte Twitter et vous aimeriez que les mises à jours, posts et autres activités de votre site web soient automatiquement envoyés à tous vos abonnés?</p>
-<p>Contactez-nous pour activer l'option <strong>Twitter</strong></p>
-<a class='button-primary' href='http://yozz.net/#contact-anchor' title='yozz.net'>Contactez yozz.net</a>
-</div>
-";
-}
-
-add_action('admin_menu', 'startup_tw');
-
-function add_menu_icon_tw(){
-?>
-
-<style>
-#toplevel_page_startup-tw a{
-color: #555;
-}
-#toplevel_page_startup-tw .dashicons-admin-generic::before {
-content: "\f301";
-color: #555 !important;
-}
-</style>
-
-<?php
-}
-add_action( 'admin_head', 'add_menu_icon_tw' );
 
 //Multilingue
 

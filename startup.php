@@ -465,4 +465,16 @@ function yozz_hide_update_notice_to_all_but_admin_users()
     }
 }
 add_action( 'admin_head', 'yozz_hide_update_notice_to_all_but_admin_users', 1 );
+
+
+
+
+/* Only show WordPress update nag to admins */
+function jp_proper_update_nag() {
+  if ( !current_user_can( 'manage_options' ) ) {
+    remove_action( 'admin_notices', 'update_nag', 3 );
+  }
+}
+add_action( 'admin_notices', 'jp_proper_update_nag', 1 );
+
 ?>
