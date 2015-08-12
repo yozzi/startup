@@ -63,17 +63,33 @@ add_filter( 'login_redirect', 'yozz_login_redirect', 10, 3 );
 /************************** Retirer des éléments du menu */
 
 function yozz_remove_admin_menus (){
-if( current_user_can( 'manage_options' ) ) {
-//remove_menu_page('edit-comments.php'); // Comments
-} else {
-if ( function_exists('remove_menu_page') ) {
+    if( current_user_can( 'manage_options' ) ) {
+        //Retirer ICI des éléments pour l'administrateur
+    } else {
+        //Retirer ici des éléments en fonction des capacités et rôles
 
-remove_menu_page('index.php'); // Dashboard tab
-//remove_menu_page('edit.php'); // Posts
-remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag'); // Sous-menu Post Tags
-//remove_menu_page('edit.php?post_type=page'); // Pages
-remove_submenu_page('edit.php?post_type=page', 'post-new.php?post_type=page'); // Sous-menu Ajouter Page
-remove_menu_page('upload.php'); // Media
+        if ( function_exists('remove_menu_page') ) {
+
+            //Retirer le menu Tableau de bord
+            remove_menu_page('index.php'); // Dashboard tab
+        
+            //Posts, automatique avec URE
+            if ( !current_user_can( 'publish_posts' ) ){
+                remove_menu_page('edit.php'); // Posts
+            }
+            
+            // Sous-menu Post Tags
+            remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
+
+            //Pour référence, automatique avec URE
+            //remove_menu_page('edit.php?post_type=page'); // Pages
+
+            // Sous-menu Ajouter Page, automatique avec URE
+            if ( !current_user_can( 'publish_pages' ) ){
+                remove_submenu_page('edit.php?post_type=page', 'post-new.php?post_type=page');
+            }
+
+//remove_menu_page('upload.php'); // Media
 //remove_menu_page('link-manager.php'); // Links
 //remove_menu_page('edit-comments.php'); // Comments
 remove_menu_page('themes.php'); // Appearance

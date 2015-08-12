@@ -20,7 +20,7 @@
 //Blog
 
 function startup_blog(){
-if( !current_user_can( 'edit_posts' ) ) {
+if( !current_user_can( 'publish_posts' ) ) {
 add_menu_page( 'StartUp Blog', 'Blog', 'read', 'startup-blog', 'startup_blog_init', '' );
 }
 }
