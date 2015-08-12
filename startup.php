@@ -8,10 +8,15 @@ Version: 1
 
 /************************** Includes */
 
-require('inc/roles.php');
-require('inc/activate.php');
-require('inc/options.php');
-require('inc/help.php');
+function yozz_includes() {
+    require('inc/roles.php');
+    require('inc/activate.php');
+    if( !current_user_can( 'manage_options' ) ) {
+        require('inc/options.php');
+    }
+    require('inc/help.php');
+}
+add_action('admin_head', 'yozz_includes');
 
 
 /************************** Style de la page de connexion */
