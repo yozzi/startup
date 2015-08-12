@@ -102,42 +102,6 @@ content: "\f122";
 }
 add_action( 'admin_head', 'add_menu_icon_com' );
 
-//Google Maps
-
-function startup_maps(){
-add_menu_page( 'StartUp Maps', 'Google Maps', 'read', 'startup-maps', 'startup_maps_init' );
-}
-
-function startup_maps_init(){
-echo "
-<div class='wrap'>
-<h2>Google Maps</h2>
-<p>Vous souhaitez afficher votre position sur une carte Google Maps interactive afin que vos clients puissent vous trouver plus facilement?</p>
-<p>Contactez-nous pour activer l'option <strong>Google Maps</strong></p>
-<a class='button-primary' href='http://yozz.net/#contact-anchor' title='yozz.net'>Contactez yozz.net</a>
-</div>
-";
-}
-
-add_action('admin_menu', 'startup_maps');
-
-function add_menu_icon_maps(){
-?>
-
-<style>
-#toplevel_page_startup-maps a{
-color: #555;
-}
-#toplevel_page_startup-maps .dashicons-admin-generic::before {
-content: "\f231";
-color: #555 !important;
-}
-</style>
-
-<?php
-}
-add_action( 'admin_head', 'add_menu_icon_maps' );
-
 //Facebook
 
 function startup_fb(){
