@@ -4,7 +4,7 @@
 function yozz_admin_notice(){
 if( !current_user_can( 'manage_options' ) ) {
 echo '<div class="error">
-<p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a> et recevez une réponse rapidement.</p>
+<p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a>.</p>
 </div>';
 }
 }
