@@ -59,8 +59,13 @@ add_action( 'admin_head', 'add_menu_icon_blog' );
 
 //Commentaires
 
+function startup_com(){
+    if ( !current_user_can( 'moderate_comments' )){
+    add_menu_page( 'StartUp Commentaires', 'Commentaires', 'read', 'startup-com', 'startup_com_init' );
+    }
+}
 function startup_com_init(){
-echo "
+        echo "
 <div class='wrap'>
 <h2>Commentaires</h2>
 Vous souhaitez pouvoir offrir à vos visiteurs la possibilité de commenter vos articles?
@@ -73,12 +78,13 @@ Vous souhaitez pouvoir offrir à vos visiteurs la possibilité de commenter vos 
 <p>Contactez-nous pour activer l'option <strong>Commentaires</strong></p>
 <a class='button-primary' href='http://yozz.net/#contact-anchor' title='yozz.net'>Contactez yozz.net</a>
 
-
-
 ";
 }
 
+
+
 add_action('admin_menu', 'startup_com');
+
 
 
 function add_menu_icon_com(){

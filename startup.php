@@ -7,14 +7,12 @@ Version: 1
 */
 
 /************************** Includes */
-
+require('inc/options.php');
 function yozz_includes() {
-    require('inc/roles.php');
-    require('inc/activate.php');
     if( !current_user_can( 'manage_options' ) ) {
-        require('inc/options.php');
+        
+        require('inc/help.php');
     }
-    require('inc/help.php');
 }
 add_action('admin_head', 'yozz_includes');
 
@@ -94,18 +92,23 @@ function yozz_remove_admin_menus (){
                 remove_submenu_page('edit.php?post_type=page', 'post-new.php?post_type=page');
             }
 
-//remove_menu_page('upload.php'); // Media
-//remove_menu_page('link-manager.php'); // Links
-//remove_menu_page('edit-comments.php'); // Comments
-remove_menu_page('themes.php'); // Appearance
-//remove_submenu_page( 'themes.php', 'customize.php' ); // Sous-menu Personnaliser, MARCHE PAS!
-//remove_submenu_page( 'themes.php', 'widgets.php' ); // Sous-menu Widgets
-//remove_menu_page('plugins.php'); // Plugins
-//remove_menu_page('users.php'); // Users
-remove_menu_page('tools.php'); // Tools
-//remove_menu_page('options-general.php'); // Settings
-remove_menu_page('profile.php'); // Profile
-remove_menu_page('wpcf7'); // Contact
+            //remove_menu_page('upload.php'); // Media
+            //remove_menu_page('link-manager.php'); // Links
+            
+            // Comments, automatique avec URE
+            if ( !current_user_can( 'moderate_comments' ) ){
+                remove_menu_page('edit-comments.php');
+            }
+            
+            remove_menu_page('themes.php'); // Appearance
+            //remove_submenu_page( 'themes.php', 'customize.php' ); // Sous-menu Personnaliser, MARCHE PAS!
+            //remove_submenu_page( 'themes.php', 'widgets.php' ); // Sous-menu Widgets
+            //remove_menu_page('plugins.php'); // Plugins
+            //remove_menu_page('users.php'); // Users
+            remove_menu_page('tools.php'); // Tools
+            //remove_menu_page('options-general.php'); // Settings
+            remove_menu_page('profile.php'); // Profile
+            remove_menu_page('wpcf7'); // Contact
 }
 }
 }
