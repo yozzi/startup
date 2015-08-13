@@ -161,6 +161,12 @@ display: none;
 	display: none;
 }
 
+
+
+.settings-error{
+    display: none;
+}
+
 /*Responsive*/
 
 @media screen and (max-width:782px) {
