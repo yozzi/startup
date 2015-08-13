@@ -1,5 +1,19 @@
-.wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item:before {
-    content: none;
+/*Menu*/
+
+.nav-menus-php .nav-tab-wrapper,
+.nav-menus-php .manage-menus,
+.nav-menus-php .delete-action,
+.nav-menus-php .menu-settings,
+.nav-menus-php #nav-menu-header {
+    display: none;
+}
+
+.wp-menu-separator {
+    display: none;
+}
+
+.settings-error {
+    display: none;
 }
 
 #adminmenu {
@@ -58,29 +72,11 @@
 #wp-fullscreen-modes {
     display: none;
 }
-/*Pages promo options*/
+/*Pages options*/
 
 .yozz_list {
     list-style: disc;
     list-style-position: inside;
-}
-/*Menu*/
-
-.nav-menus-php .nav-tab-wrapper,
-.nav-menus-php .manage-menus,
-.nav-menus-php .delete-action,
-.nav-menus-php .menu-settings,
-.nav-menus-php #nav-menu-header {
-    display: none;
-}
-/*Cacher les séparateurs du menu*/
-
-.wp-menu-separator {
-    display: none;
-}
-
-.settings-error {
-    display: none;
 }
 /*Responsive*/
 
