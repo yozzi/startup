@@ -1,115 +1,92 @@
-#wp-admin-bar-site-name .ab-item{
-    padding-left:25px !important;
-    background-image:url(../wp-content/plugins/startup/img/startup_logo2w.png) !important;
-    background-size:25px !important;
-    background-repeat:no-repeat !important;
-    background-position:0 4px !important;
+.wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item:before {
+    content: none;
 }
 
-#wp-admin-bar-site-name .ab-item:hover{
-    padding-left:25px !important;
-    background-image:url(../wp-content/plugins/startup/img/startup_logo2w.png) !important;
-    background-size:25px;
-    background-repeat:no-repeat;
-    background-position:0 4px;
+#adminmenu {
+    margin: 0;
 }
-
-.wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item:before{
-    content:none;
-}
-
-#adminmenu{
-    margin:0;
-}
-
 /*Général*/
 
-#wp-admin-bar-view{
-    display:none;
+#wp-admin-bar-view {
+    display: none;
 }
 
-.handlediv{
-    display:none;
+.handlediv {
+    display: none;
 }
 
-.hndle{
+.hndle {
     cursor: auto !important;
 }
 
-.row-actions .inline{
-    display:none;
-}
-
-.add-new-h2{
+.row-actions .inline {
     display: none;
 }
 
-.bulkactions{
+.add-new-h2 {
     display: none;
 }
 
+.bulkactions {
+    display: none;
+}
 /*Pages et Posts*/
 
-#visibility{
+#visibility {
     display: none;
 }
 
-.post-type-page .subsubsub{
+.post-type-page .subsubsub {
     display: none;
 }
 
-.post-type-page .search-box{
+.post-type-page .search-box {
     display: none;
 }
 
-.post-type-page .actions{
+.post-type-page .actions {
     display: none;
 }
 
-.post-type-page .check-column{
+.post-type-page .check-column {
     display: none;
 }
-
 /*Editeur WYSIWYG*/
 
-#content-tmce, #content-html, #wp-fullscreen-modes {
+#content-tmce,
+#content-html,
+#wp-fullscreen-modes {
     display: none;
 }
-
 /*Pages promo options*/
 
-.yozz_list{
-    list-style:disc;
+.yozz_list {
+    list-style: disc;
     list-style-position: inside;
 }
-
 /*Menu*/
 
 .nav-menus-php .nav-tab-wrapper,
 .nav-menus-php .manage-menus,
 .nav-menus-php .delete-action,
 .nav-menus-php .menu-settings,
-.nav-menus-php #nav-menu-header{
+.nav-menus-php #nav-menu-header {
     display: none;
 }
-
 /*Cacher les séparateurs du menu*/
 
-.wp-menu-separator{
-	display: none;
-}
-
-.settings-error{
+.wp-menu-separator {
     display: none;
 }
 
+.settings-error {
+    display: none;
+}
 /*Responsive*/
 
-@media screen and (max-width:782px) {
-
+@media screen and (max-width: 782px) {
     #wp-admin-bar-wp-admin-bar-startup,
-    #wp-admin-bar-site-name{
+    #wp-admin-bar-site-name {
         display: none !important;
     }
-
 }
