@@ -19,6 +19,14 @@ background-repeat:no-repeat;
 background-position:0 4px;
 }
 
+#wp-admin-bar-my-account > .ab-item::before{
+color: #fff
+}
+
+#wpadminbar #wp-admin-bar-menu-toggle .ab-icon::before{
+color: #fff
+}
+
 #wpadminbar .ab-item, #wpadminbar a.ab-item{
 color:white;
 }
@@ -163,7 +171,7 @@ display: none !important;
 }
 
 #wp-admin-bar-menu-toggle:hover{
-background: #26292c;
+/*background: #26292c;*/
 }
 
 }
