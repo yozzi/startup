@@ -325,46 +325,27 @@ function yozz_hide_personal_options(){
 
 add_action('admin_head','yozz_hide_personal_options');
 
+//Pour référence
 //Ajouter les champs dans informations de contact
-function yozz_extended_contact_info($user_contactmethods) {  
-    $user_contactmethods = array(
-        'building' => __('Building'),
-        'room' => __('Room'),
-        'phone' => __('Phone')
-    );  
-    return $user_contactmethods;
-}  
-
+//function yozz_extended_contact_info($user_contactmethods) {  
+//    $user_contactmethods = array(
+//        'building' => __('Building'),
+//        'room' => __('Room'),
+//        'phone' => __('Phone')
+//    );  
+//    return $user_contactmethods;
+//}  
+//
 //add_filter('user_contactmethods', 'yozz_extended_contact_info');
 
+//Pour référence
 //Retirer le choix de couleurs
-
 //function yozz_admin_del_color_options() {
 //   global $_wp_admin_css_colors;
 //   $_wp_admin_css_colors = 0;
 //}
 
 //add_action('admin_head', 'yozz_admin_del_color_options');
-
-//Retirer la biographie
-
-class yozz_hide_profile_bio_box {
-    public static function start() {
-        $action = ( IS_PROFILE_PAGE ? 'show' : 'edit' ) . '_user_profile';
-        add_action( $action, array ( __CLASS__, 'stop' ) );
-        ob_start();
-    }
-    public static function stop() {
-        $html = ob_get_contents();
-        ob_end_clean();
-        $headline = __( IS_PROFILE_PAGE ? 'About Yourself' : 'About the user' );
-        $html = str_replace( '<h3>' . $headline . '</h3>', '', $html );
-        $html = preg_replace( '~<tr>\s*<th><label for="description".*</tr>~imsUu', '', $html );
-        print $html;
-    }
-}
-
-//add_action( 'personal_options', array ( 'yozz_hide_profile_bio_box', 'start' ) );
 
 //Désactiver les notifications de mise-à-jour de WordPress pour les non-admin
 function yozz_hide_update_notice_to_all_but_admin_users() {
