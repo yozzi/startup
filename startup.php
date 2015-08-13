@@ -7,10 +7,10 @@ Version: 1
 */
 
 /************************** Includes */
+
 require('inc/options.php');
 function yozz_includes() {
     if( !current_user_can( 'manage_options' ) ) {
-        
         require('inc/help.php');
     }
 }
