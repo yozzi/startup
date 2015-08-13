@@ -450,7 +450,7 @@ add_filter( 'wp_default_editor', 'yozz_admin_default_editor' );
 //   $_wp_admin_css_colors = 0;
 //}
 //
-//add_action('admin_head', 'yozz_admin_del_color_options');
+//add_action('admin_head', 'yozz_admin_del_color_options'); test
 
 //Retirer la biographie
 
