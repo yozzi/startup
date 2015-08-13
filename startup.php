@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: StartUp
-Description: Le plugin pour les fonctions de base de StartUp
+Description: Le plugin pour les fonctions de base de StartUp Reloaded
 Author: Yann Caplain
 Version: 1
 */
