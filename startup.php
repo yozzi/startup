@@ -9,27 +9,27 @@ Version: 1.0
 /************************** Includes */
 
 require('inc/options.php');
-function yozz_includes() {
+function startup_reloaded_includes() {
     if( !current_user_can( 'manage_options' ) ) {
         require('inc/help.php');
     }
 }
-add_action('admin_head', 'yozz_includes');
+add_action('admin_head', 'startup_reloaded_includes');
 
 
 /************************** Style de la page de connexion */
 
-function yozz_custom_login_style() {
+function startup_reloaded_custom_login_style() {
     echo '<style type="text/css">';
     include 'css/startup_admin_login.css';
     echo '</style>';
 }
 
-add_action('login_head', 'yozz_custom_login_style');
+add_action('login_head', 'startup_reloaded_custom_login_style');
 
 /************************** Style de la zone admin */
 
-function yozz_custom_admin_head() {
+function startup_reloaded_custom_admin_head() {
 	if( !current_user_can( 'manage_options' ) ) {
         echo '<style type="text/css">';
         include 'css/startup_admin.css';
@@ -37,21 +37,21 @@ function yozz_custom_admin_head() {
     }
 }
 
-add_action('admin_head', 'yozz_custom_admin_head');
+add_action('admin_head', 'startup_reloaded_custom_admin_head');
 
 /************************** Style de la zone admin pour tout le monde */
 
-function yozz_custom_admin_head_everyone() {
+function startup_reloaded_custom_admin_head_everyone() {
     echo '<style type="text/css">';
     include 'css/startup_admin_everyone.css';
     echo '</style>';
 }
 
-add_action('admin_head', 'yozz_custom_admin_head_everyone');
+add_action('admin_head', 'startup_reloaded_custom_admin_head_everyone');
 
 /************************** Rediriger vers une autre page au login */
 
-function yozz_login_redirect( $redirect_to, $request, $user ) {
+function startup_reloaded_login_redirect( $redirect_to, $request, $user ) {
     if ( is_array( $user->roles ) ) {
         if ( in_array( 'owner', $user->roles ) ) {
             return admin_url( 'edit.php?post_type=page' );
@@ -61,11 +61,11 @@ function yozz_login_redirect( $redirect_to, $request, $user ) {
     }
 }
 
-add_filter( 'login_redirect', 'yozz_login_redirect', 10, 3 );
+add_filter( 'login_redirect', 'startup_reloaded_login_redirect', 10, 3 );
 
 /************************** Retirer des éléments du menu */
 
-function yozz_remove_admin_menus (){
+function startup_reloaded_remove_admin_menus (){
     if( current_user_can( 'manage_options' ) ) {
         //Retirer ICI des éléments pour l'administrateur
     } else {
@@ -113,34 +113,34 @@ function yozz_remove_admin_menus (){
     }
 }
 
-add_action('admin_menu', 'yozz_remove_admin_menus');
+add_action('admin_menu', 'startup_reloaded_remove_admin_menus');
 
 /************************** Renommer des éléments du menu */
 
-function yozz_edit_admin_menus() {
+function startup_reloaded_edit_admin_menus() {
     global $menu;
     $menu[5][0] = 'Blog'; // Change Posts to Blog
 }
 
-add_action( 'admin_menu', 'yozz_edit_admin_menus' );
+add_action( 'admin_menu', 'startup_reloaded_edit_admin_menus' );
 
 /************************** Réorganiser le menu */
 //Pour que les pages appraîssent avant les post
 
-function yozz_custom_menu_order($menu_ord) {
+function startup_reloaded_custom_menu_order($menu_ord) {
     if (!current_user_can('manage_options')) {
         if (!$menu_ord) return true;
         return array('edit.php?post_type=page', 'edit.php');
     }
 }
 
-add_filter('custom_menu_order', 'yozz_custom_menu_order');
+add_filter('custom_menu_order', 'startup_reloaded_custom_menu_order');
 
-add_filter('menu_order', 'yozz_custom_menu_order');
+add_filter('menu_order', 'startup_reloaded_custom_menu_order');
 
 /************************** Retirer des éléments de la barre */
 
-function yozz_remove_admin_bar_links() {
+function startup_reloaded_remove_admin_bar_links() {
     global $wp_admin_bar, $current_user;
 
     // To remove WordPress logo and related submenu items
@@ -179,11 +179,11 @@ function yozz_remove_admin_bar_links() {
     //$wp_admin_bar->remove_menu('my-account');
 }
 
-add_action( 'wp_before_admin_bar_render', 'yozz_remove_admin_bar_links' );
+add_action( 'wp_before_admin_bar_render', 'startup_reloaded_remove_admin_bar_links' );
 
 /************************** Modifier le message "Howdy, " */
 
-function yozz_replace_howdy( $wp_admin_bar ) {
+function startup_reloaded_replace_howdy( $wp_admin_bar ) {
     $my_account=$wp_admin_bar->get_node('my-account');
     $newtitle = str_replace( 'Salutations,', 'Vous êtes connecté en tant que', $my_account->title );            
     $wp_admin_bar->add_node(
@@ -194,48 +194,48 @@ function yozz_replace_howdy( $wp_admin_bar ) {
     );
 }
 
-add_filter( 'admin_bar_menu', 'yozz_replace_howdy',25 );
+add_filter( 'admin_bar_menu', 'startup_reloaded_replace_howdy',25 );
 
 /************************** Retirer le panneau "Options de l'écran" */
 
-function yozz_panneau_options() {
+function startup_reloaded_panneau_options() {
     if ( !current_user_can( 'manage_options' ) )
         add_filter('screen_options_show_screen', '__return_false');
 }
 
-add_action( 'plugins_loaded', 'yozz_panneau_options' );
+add_action( 'plugins_loaded', 'startup_reloaded_panneau_options' );
 
 /************************** Désactiver le glisser déposer des boîtes */
 //Commenté car empêche le bon fonctionnement de beaucoup de choses
 
-//function yozz_disable_drag_metabox() {
+//function startup_reloaded_disable_drag_metabox() {
 //    if (!current_user_can('manage_options')) {
 //        wp_deregister_script('postbox');
 //    }
 //}
 //
-//add_action( 'admin_init', 'yozz_disable_drag_metabox' );
+//add_action( 'admin_init', 'startup_reloaded_disable_drag_metabox' );
 
 /************************** Retirer le lien vers l'aide */
 
-function yozz_remove_help_tabs($old_help, $screen_id, $screen){
+function startup_reloaded_remove_help_tabs($old_help, $screen_id, $screen){
     $screen->remove_help_tabs();
     return $old_help;
 }
 
-add_filter( 'contextual_help', 'yozz_remove_help_tabs', 999, 3 );
+add_filter( 'contextual_help', 'startup_reloaded_remove_help_tabs', 999, 3 );
 
 /************************** Retirer la barre d'admin sur fontend */
 
-function yozz_retirer_barre() {
+function startup_reloaded_retirer_barre() {
     add_filter('show_admin_bar', '__return_false');
 }
 
-add_action( 'plugins_loaded', 'yozz_retirer_barre' );
+add_action( 'plugins_loaded', 'startup_reloaded_retirer_barre' );
 
 /************************** Ajouter lien yozz.net */
 
-function yozz_admin_bar_new_item() {
+function startup_reloaded_admin_bar_new_item() {
     global $wp_admin_bar;
     $wp_admin_bar->add_menu(
         array(
@@ -246,58 +246,58 @@ function yozz_admin_bar_new_item() {
     );
 }
 
-add_action('wp_before_admin_bar_render', 'yozz_admin_bar_new_item', 10);
+add_action('wp_before_admin_bar_render', 'startup_reloaded_admin_bar_new_item', 10);
 
 /************************** Modifier le numéro de version */
 
-function yozz_change_footer_version() {
+function startup_reloaded_change_footer_version() {
     return 'Version 1.0';
 }
 
-add_filter( 'update_footer', 'yozz_change_footer_version', 9999 );
+add_filter( 'update_footer', 'startup_reloaded_change_footer_version', 9999 );
 
 /************************** WordPress Admin change footer text */
 
-function yozz_remove_footer_admin () {
+function startup_reloaded_remove_footer_admin () {
     echo 'Vous utilisez l\'application <a href="http://startup.yozz.net" target="_blank">StartUp</a> développée par <a href="http://yozz.net" target="_blank">yozz.net</a>';
 }
 
-add_filter('admin_footer_text', 'yozz_remove_footer_admin');
+add_filter('admin_footer_text', 'startup_reloaded_remove_footer_admin');
 
 /************************** Ajouter un lien All Settings pour l'admin */
 
-//function yozz_all_settings_link() {
+//function startup_reloaded_all_settings_link() {
 //    add_options_page(__('All Settings'), __('Adv. Settings'), 'administrator', 'options.php');
 //}
 //
-//add_action('admin_menu', 'yozz_all_settings_link');
+//add_action('admin_menu', 'startup_reloaded_all_settings_link');
 
 /************************** Modifier TinyMCE */
 
 // Utiliser l'éditeur WYSIWYG par défaut
-function yozz_default_editor() {
+function startup_reloaded_default_editor() {
     if (!current_user_can('manage_options')) {
         $r = 'tinymce'; // html or tinymce
         return $r;
     }
 }
 
-add_filter( 'wp_default_editor', 'yozz_default_editor' );
+add_filter( 'wp_default_editor', 'startup_reloaded_default_editor' );
 
 // Utiliser l'éditeur HTML par défaut pour l'admin
-function yozz_admin_default_editor() {
+function startup_reloaded_admin_default_editor() {
     if (current_user_can('manage_options')) {
         $r = 'html'; // html or tinymce
         return $r;
     }
 }
 
-add_filter( 'wp_default_editor', 'yozz_admin_default_editor' );
+add_filter( 'wp_default_editor', 'startup_reloaded_admin_default_editor' );
 
 /************************** Modifier la page profil */
 
 //Retirer des infos avec jQuery
-function yozz_hide_personal_options(){
+function startup_reloaded_hide_personal_options(){
     if (!current_user_can('manage_options')) {
         echo "
             <script type='text/javascript'>
@@ -323,11 +323,11 @@ function yozz_hide_personal_options(){
     }
 }
 
-add_action('admin_head','yozz_hide_personal_options');
+add_action('admin_head','startup_reloaded_hide_personal_options');
 
 //Pour référence
 //Ajouter les champs dans informations de contact
-//function yozz_extended_contact_info($user_contactmethods) {  
+//function startup_reloaded_extended_contact_info($user_contactmethods) {  
 //    $user_contactmethods = array(
 //        'building' => __('Building'),
 //        'room' => __('Room'),
@@ -336,23 +336,23 @@ add_action('admin_head','yozz_hide_personal_options');
 //    return $user_contactmethods;
 //}  
 //
-//add_filter('user_contactmethods', 'yozz_extended_contact_info');
+//add_filter('user_contactmethods', 'startup_reloaded_extended_contact_info');
 
 //Pour référence
 //Retirer le choix de couleurs
-//function yozz_admin_del_color_options() {
+//function startup_reloaded_admin_del_color_options() {
 //   global $_wp_admin_css_colors;
 //   $_wp_admin_css_colors = 0;
 //}
 
-//add_action('admin_head', 'yozz_admin_del_color_options');
+//add_action('admin_head', 'startup_reloaded_admin_del_color_options');
 
 //Désactiver les notifications de mise-à-jour de WordPress pour les non-admin
-function yozz_hide_update_notice_to_all_but_admin_users() {
+function startup_reloaded_hide_update_notice_to_all_but_admin_users() {
     if (!current_user_can('update_core')) {
         remove_action( 'admin_notices', 'update_nag', 3 );
     }
 }
 
-add_action( 'admin_head', 'yozz_hide_update_notice_to_all_but_admin_users', 1 );
+add_action( 'admin_head', 'startup_reloaded_hide_update_notice_to_all_but_admin_users', 1 );
 ?>
