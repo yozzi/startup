@@ -72,12 +72,7 @@
 #wp-fullscreen-modes {
     display: none;
 }
-/*Pages options*/
 
-.yozz_list {
-    list-style: disc;
-    list-style-position: inside;
-}
 /*Responsive*/
 
 @media screen and (max-width: 782px) {

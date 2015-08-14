@@ -29,3 +29,9 @@
 .cmb-repeatable-group .cmb-row {
     padding-bottom: 0 !important;
 }
+/*Pages options*/
+
+.yozz_list {
+    list-style: disc;
+    list-style-position: inside;
+}
