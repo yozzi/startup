@@ -1,12 +1,12 @@
 <?php
 /************************** Messages d'aide en haut de chaque page */
 
-function yozz_admin_notice(){
+function startup_reloaded_admin_notice(){
 echo '<div class="error">
 <p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a>.</p>
 </div>';
 }
-add_action('admin_notices', 'yozz_admin_notice');
+add_action('admin_notices', 'startup_reloaded_admin_notice');
 
 // Notice avec option Cacher
 
