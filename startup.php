@@ -14,6 +14,7 @@ function startup_reloaded_includes() {
         require('inc/help.php');
     }
 }
+
 add_action('admin_head', 'startup_reloaded_includes');
 
 
