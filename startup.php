@@ -3,7 +3,7 @@
 Plugin Name: StartUp
 Description: Le plugin pour les fonctions de base de StartUp Reloaded
 Author: Yann Caplain
-Version: 1.0
+Version: 1.1.0
 */
 
 /************************** Includes */
