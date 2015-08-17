@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: StartUp
+Plugin Name: StartUp Plugin
 Description: Le plugin pour les fonctions de base de StartUp Reloaded
 Author: Yann Caplain
 Version: 1.2.0
