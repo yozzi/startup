@@ -142,12 +142,12 @@ add_action('admin_menu', 'startup_reloaded_remove_admin_menus');
 
 /************************** Renommer des éléments du menu */
 
-function startup_reloaded_edit_admin_menus() {
-    global $menu;
-    $menu[5][0] = 'Blog'; // Change Posts to Blog
-}
-
-add_action( 'admin_menu', 'startup_reloaded_edit_admin_menus' );
+//function startup_reloaded_edit_admin_menus() {
+//    global $menu;
+//    $menu[5][0] = 'Blog'; // Change Posts to Blog
+//}
+//
+//add_action( 'admin_menu', 'startup_reloaded_edit_admin_menus' );
 
 /************************** Réorganiser le menu */
 //Pour que les pages appraîssent avant les post
