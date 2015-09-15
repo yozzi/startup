@@ -35,3 +35,11 @@
     list-style: disc;
     list-style-position: inside;
 }
+/*Responsive*/
+
+@media screen and (max-width: 782px) {
+    #wp-admin-bar-wp-admin-bar-startup,
+    #wp-admin-bar-site-name {
+        display: none !important;
+    }
+}
