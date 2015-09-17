@@ -6,6 +6,8 @@ Author: Yann Caplain
 Version: 1.2.2
 */
 
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 //GitHub Plugin Updater
 function startup_reloaded_plugin_updater() {
 	include_once 'lib/updater.php';
@@ -43,14 +45,15 @@ add_action('admin_head', 'startup_reloaded_includes');
 
 
 /************************** Style de la page de connexion */
-
-function startup_reloaded_custom_login_style() {
-    echo '<style type="text/css">';
-    include 'css/startup_admin_login.css';
-    echo '</style>';
-}
+if (!is_plugin_active('theme-my-login/theme-my-login.php')){
+    function startup_reloaded_custom_login_style() {
+        echo '<style type="text/css">';
+        include 'css/startup_admin_login.css';
+        echo '</style>';
+    }
 
 add_action('login_head', 'startup_reloaded_custom_login_style');
+}
 
 /************************** Style de la zone admin */
 
