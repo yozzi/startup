@@ -282,7 +282,7 @@ function startup_reloaded_change_footer_version() {
     return 'Version 1.0';
 }
 
-add_filter( 'update_footer', 'startup_reloaded_change_footer_version', 9999 );
+//add_filter( 'update_footer', 'startup_reloaded_change_footer_version', 9999 );
 
 /************************** WordPress Admin change footer text */
 
