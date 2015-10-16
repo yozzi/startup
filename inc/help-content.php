@@ -41,9 +41,9 @@
             <td>StartUp Services</td>
         </tr>
         <tr>
-            <td class="row-title">Pricing</td>
+            <td class="row-title">Pricing Table</td>
             <td>A pricing table, full of options</td>
-            <td>StartUp Pricing</td>
+            <td>StartUp Pricing Table</td>
         </tr>
         <tr class="alternate">
             <td class="row-title">Team</td>
@@ -138,10 +138,10 @@
         </tr>
         <tr>
             <td class="row-title">[pricing]</td>
-            <td>Pricing</td>
+            <td>Pricing Table</td>
             <td>3 in a row</td>
             <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
-            <td>StartUp Pricing</td>
+            <td>StartUp Pricing Table</td>
         </tr>
         <tr class="alternate">
             <td class="row-title">[team]</td>
