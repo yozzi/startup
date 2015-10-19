@@ -34,7 +34,9 @@ add_action( 'init', 'startup_reloaded_plugin_updater' );
 
 /************************** Includes */
 
-require('inc/options.php');
+//Pubs pour les options
+//require('inc/options.php');
+
 function startup_reloaded_includes() {
     if( !current_user_can( 'manage_options' ) ) {
         require('inc/help.php');
