@@ -81,11 +81,11 @@ add_action('admin_head', 'startup_reloaded_custom_admin_head_everyone');
 
 function startup_reloaded_login_redirect( $redirect_to, $request, $user ) {
     if ( is_array( $user->roles ) ) {
-        if ( in_array( 'owner', $user->roles ) ) {
+        //if ( in_array( 'owner', $user->roles ) ) {
             return admin_url( 'edit.php?post_type=page' );
-        } else {
-            return admin_url();
-        }
+       // } else {
+       //     return admin_url();
+       //}
     }
 }
 
@@ -96,6 +96,12 @@ add_filter( 'login_redirect', 'startup_reloaded_login_redirect', 10, 3 );
 function startup_reloaded_remove_admin_menus (){
     if( current_user_can( 'manage_options' ) ) {
         //Retirer ICI des éléments pour l'administrateur
+        if ( function_exists('remove_menu_page') ) {
+
+            //Retirer le menu Tableau de bord
+            remove_menu_page('index.php'); // Dashboard tab
+        }
+        
     } else {
         //Retirer ici des éléments en fonction des capacités et rôles
 
