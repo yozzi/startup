@@ -94,22 +94,22 @@ add_filter( 'login_redirect', 'startup_reloaded_login_redirect', 10, 3 );
 /************************** Retirer des éléments du menu */
 
 function startup_reloaded_remove_admin_menus (){
+    //Retirer ICI des éléments pour tout les utilisateurs
+    //Retirer le premier separateur
+    global $menu;
+    unset($menu[4]);
+    
+    //Retirer le menu Tableau de bord
+    remove_menu_page('index.php'); // Dashboard tab
+    
     if( current_user_can( 'manage_options' ) ) {
         //Retirer ICI des éléments pour l'administrateur
-        if ( function_exists('remove_menu_page') ) {
-
-            //Retirer le menu Tableau de bord
-            remove_menu_page('index.php'); // Dashboard tab
-        }
         
     } else {
         //Retirer ici des éléments en fonction des capacités et rôles
 
         if ( function_exists('remove_menu_page') ) {
 
-            //Retirer le menu Tableau de bord
-            remove_menu_page('index.php'); // Dashboard tab
-        
             //Posts, automatique avec URE
             if ( !current_user_can( 'publish_posts' ) ){
                 remove_menu_page('edit.php'); // Posts
@@ -288,7 +288,7 @@ function startup_reloaded_change_footer_version() {
     return 'Version 1.0';
 }
 
-//add_filter( 'update_footer', 'startup_reloaded_change_footer_version', 9999 );
+add_filter( 'update_footer', 'startup_reloaded_change_footer_version', 9999 );
 
 /************************** WordPress Admin change footer text */
 
