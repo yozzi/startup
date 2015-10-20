@@ -80,6 +80,11 @@
             <td>A work in progress...</td>
             <td>StartUp Rooms <?php if ( is_plugin_active('startup-cpt-rooms/startup-cpt-rooms.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
+        <tr>
+            <td class="row-title">Partners</td>
+            <td>Display partners logos with link to their websites</td>
+            <td>StartUp Partners <?php if ( is_plugin_active('startup-cpt-partners/startup-cpt-partners.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
+        </tr>
         </tbody>
     </table>    
     <h3>Shortcodes</h3>
@@ -177,6 +182,13 @@
             <td>Shuffle or Grid style</td>
             <td style="text-align:center"></td>
             <td>StartUp Portfolio <?php if ( is_plugin_active('startup-cpt-portfolio/startup-cpt-portfolio.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?> and set style in Theme Options / Post Types</td>
+        </tr>
+        <tr>
+            <td class="row-title">[partners]</td>
+            <td>Partners</td>
+            <td>4 in a row, in a carousel if more than 4</td>
+            <td style="text-align:center"></td>
+            <td>StartUp Partners <?php if ( is_plugin_active('startup-cpt-partners/startup-cpt-partners.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         </tbody>
     </table>

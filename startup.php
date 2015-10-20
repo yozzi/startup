@@ -391,4 +391,30 @@ function startup_reloaded_hide_update_notice_to_all_but_admin_users() {
 }
 
 add_action( 'admin_head', 'startup_reloaded_hide_update_notice_to_all_but_admin_users', 1 );
+
+
+
+
+/************************** Help */
+
+function startup_reloaded_help(){
+    add_menu_page( 'StartUp Help', 'Help', 'read', 'startup-help', 'startup_reloaded_help_init' );
+}
+
+function startup_reloaded_help_init(){
+    require('inc/help-content.php');
+}
+
+add_action('admin_menu', 'startup_reloaded_help');
+
+function startup_reloaded_add_menu_icon_help(){ ?>
+    <style>
+        #toplevel_page_startup-help .dashicons-admin-generic::before {
+            content: "\f339";
+            /*color: #555 !important;*/
+        }
+    </style>
+<?php }
+
+add_action( 'admin_head', 'startup_reloaded_add_menu_icon_help' );
 ?>
