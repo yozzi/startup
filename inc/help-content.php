@@ -82,7 +82,7 @@
         </tr>
         <tr>
             <td class="row-title">Partners</td>
-            <td>Display partners logos with link to their websites</td>
+            <td>Display partner logos with link to their websites</td>
             <td>StartUp Partners <?php if ( is_plugin_active('startup-cpt-partners/startup-cpt-partners.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         </tbody>
@@ -187,7 +187,7 @@
             <td class="row-title">[partners]</td>
             <td>Partners</td>
             <td>4 in a row, in a carousel if more than 4</td>
-            <td style="text-align:center"></td>
+            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Partners <?php if ( is_plugin_active('startup-cpt-partners/startup-cpt-partners.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         </tbody>
