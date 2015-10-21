@@ -94,7 +94,6 @@
             <th class="row-title">Shortcode</th>
             <th>Displays</th>
             <th>Desktop layout</th>
-            <th style="text-align:center">.container</th>
             <th>Requirement</th>
         </tr>
         </thead>
@@ -103,91 +102,78 @@
             <td class="row-title">[home]</td>
             <td>Home Sections</td>
             <td>1 in first row, then 2 in a row</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Home <?php if ( is_plugin_active('startup-cpt-home/startup-cpt-home.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
             <td class="row-title">[home id="xx"]</td>
             <td>Home Section by ID</td>
             <td></td>
-            <td style="text-align:center"></td>
             <td>StartUp Home <?php if ( is_plugin_active('startup-cpt-home/startup-cpt-home.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr>
             <td class="row-title">[section id="xx"]</td>
             <td>Section by ID</td>
             <td></td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Sections <?php if ( is_plugin_active('startup-cpt-sections/startup-cpt-sections.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
             <td class="row-title">[blog]</td>
             <td>Blog</td>
             <td>Shuffle or Grid style</td>
-            <td style="text-align:center"></td>
             <td>Set style in Theme Options / Post Types</td>
         </tr>
         <tr>
             <td class="row-title">[milestones]</td>
             <td>Milestones</td>
             <td>4 in a row</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Milestones <?php if ( is_plugin_active('startup-cpt-milestones/startup-cpt-milestones.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
             <td class="row-title">[services]</td>
             <td>Services</td>
             <td>3 in a row</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Services <?php if ( is_plugin_active('startup-cpt-services/startup-cpt-services.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr>
             <td class="row-title">[pricing]</td>
             <td>Pricing Table</td>
             <td>3 in a row</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Pricing Table <?php if ( is_plugin_active('startup-cpt-pricing-table/startup-cpt-pricing-table.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
             <td class="row-title">[team]</td>
             <td>Team</td>
             <td>4 in a row and in a carousel if more</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Team <?php if ( is_plugin_active('startup-cpt-team/startup-cpt-team.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr>
             <td class="row-title">[projects]</td>
             <td>Projects</td>
             <td>3 in a row</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Projects <?php if ( is_plugin_active('startup-cpt-projects/startup-cpt-projects.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
             <td class="row-title">[testimonials]</td>
             <td>Testimonials</td>
             <td>1 by 1 in a carousel</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Testimonials <?php if ( is_plugin_active('startup-cpt-testimonials/startup-cpt-testimonials.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr>
             <td class="row-title">[products]</td>
             <td>Products</td>
             <td>Shuffle style</td>
-            <td style="text-align:center"></td>
             <td>StartUp Products <?php if ( is_plugin_active('startup-cpt-products/startup-cpt-products.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
             <td class="row-title">[portfolio]</td>
             <td>Portfolio</td>
             <td>Shuffle or Grid style</td>
-            <td style="text-align:center"></td>
             <td>StartUp Portfolio <?php if ( is_plugin_active('startup-cpt-portfolio/startup-cpt-portfolio.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?> and set style in Theme Options / Post Types</td>
         </tr>
         <tr>
             <td class="row-title">[partners]</td>
             <td>Partners</td>
             <td>4 in a row, in a carousel if more than 4</td>
-            <td style="text-align:center"><span class="dashicons dashicons-yes"></span></td>
             <td>StartUp Partners <?php if ( is_plugin_active('startup-cpt-partners/startup-cpt-partners.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         </tbody>
