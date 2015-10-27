@@ -417,4 +417,11 @@ function startup_reloaded_add_menu_icon_help(){ ?>
 <?php }
 
 add_action( 'admin_head', 'startup_reloaded_add_menu_icon_help' );
+
+/************************** Blog Shortcode */
+add_shortcode( 'blog', function( $atts, $content= null ){
+    ob_start();
+    require get_template_directory() . '/inc/shortcodes/blog.php';
+    return ob_get_clean();
+});
 ?>
