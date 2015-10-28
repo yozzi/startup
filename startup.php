@@ -82,13 +82,13 @@ add_action('admin_head', 'startup_reloaded_custom_admin_head_everyone');
 /************************** Rediriger vers une autre page au login */
 
 function startup_reloaded_login_redirect( $redirect_to, $request, $user ) {
-    if ( is_array( $user->roles ) ) {
+    //if ( is_array( $user->roles ) ) {
         //if ( in_array( 'owner', $user->roles ) ) {
             return admin_url( 'edit.php?post_type=page' );
        // } else {
        //     return admin_url();
        //}
-    }
+    //}
 }
 
 add_filter( 'login_redirect', 'startup_reloaded_login_redirect', 10, 3 );
