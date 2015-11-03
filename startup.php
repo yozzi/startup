@@ -421,7 +421,7 @@ add_action( 'admin_head', 'startup_reloaded_add_menu_icon_help' );
 /************************** Blog Shortcode */
 add_shortcode( 'blog', function( $atts, $content= null ){
     ob_start();
-    require get_template_directory() . '/inc/shortcodes/blog.php';
+    require get_template_directory() . '/template-parts/content-blog.php';
     return ob_get_clean();
 });
 ?>
