@@ -1,9 +1,10 @@
 <?php
 /*
-Plugin Name: StartUp Plugin
+Plugin Name: StartUp
 Description: Le plugin pour les fonctions de base de StartUp Reloaded
 Author: Yann Caplain
 Version: 1.2.2
+Text Domain: startup
 */
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );

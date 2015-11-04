@@ -1,12 +1,12 @@
 <div class='wrap'>
-    <h2>StartUp Help and Reference</h2>
-    <h3>Post Types</h3>
+    <h2><?php _e( 'StartUp Help and Reference', 'startup' ) ?></h2>
+    <h3><?php _e( 'Post Types', 'startup' ) ?></h3>
     <table class="widefat">
         <thead>
         <tr>
-            <th class="row-title">Post Type</th>
-            <th>Details</th>
-            <th>Requirement</th>
+            <th class="row-title"><?php _e( 'Post Type', 'startup' ) ?></th>
+            <th></th>
+            <th><?php _e( 'Requirement', 'startup' ) ?></th>
         </tr>
         </thead>
         <tbody>
