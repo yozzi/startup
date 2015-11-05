@@ -12,7 +12,7 @@
         <tbody>
         <tr>
             <td class="row-title">Slider</td>
-            <td>manage the slides on the homepage</td>
+            <td>Manage the slides on the homepage</td>
             <td>StartUp Slider <?php if ( is_plugin_active('startup-cpt-slider/startup-cpt-slider.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
