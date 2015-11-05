@@ -420,9 +420,17 @@ function startup_reloaded_add_menu_icon_help(){ ?>
 add_action( 'admin_head', 'startup_reloaded_add_menu_icon_help' );
 
 /************************** Blog Shortcode */
-add_shortcode( 'blog', function( $atts, $content= null ){
-    ob_start();
-    require get_template_directory() . '/template-parts/content-blog.php';
-    return ob_get_clean();
-});
+function startup_reloaded_blog_shortcode( $atts ) {
+
+	// Attributes
+    $atts = shortcode_atts(array(
+            'bg' => ''
+        ), $atts);
+    
+	// Code
+        ob_start();
+        require get_template_directory() . '/template-parts/content-blog.php';
+        return ob_get_clean();    
+}
+add_shortcode( 'blog', 'startup_reloaded_blog_shortcode' );
 ?>
