@@ -35,6 +35,15 @@
     list-style: disc;
     list-style-position: inside;
 }
+/*Top Menu*/
+#wpadminbar #wp-admin-bar-my-account.with-avatar #wp-admin-bar-user-actions>li {
+    margin-left: 0;
+}
+edit.phpmedia="all"
+#wpadminbar #wp-admin-bar-user-actions>li {
+    margin-left: 0;
+}
+
 /*Responsive*/
 
 @media screen and (max-width: 782px) {
