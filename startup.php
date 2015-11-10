@@ -433,4 +433,8 @@ function startup_reloaded_blog_shortcode( $atts ) {
         return ob_get_clean();    
 }
 add_shortcode( 'blog', 'startup_reloaded_blog_shortcode' );
+
+//Remove emoji
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
 ?>
