@@ -437,41 +437,4 @@ add_shortcode( 'blog', 'startup_reloaded_blog_shortcode' );
 //Remove emoji
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
-
-//Modify Timeline CPT
-function wpse_65075_modify_timeline_menu_icon( $post_type, $args ) {
-    // Make sure we're only editing the post type we want
-    if ( 'te_announcements' != $post_type )
-        return;
-    
-//     //Get labels and update them 
-//     $labels = get_post_type_labels( get_post_type_object( $post_type ) );
-//     $labels->name = 'Some things';
-//     $labels->singular_name= 'Some thing';
-//
-//     //update args
-//     $args->labels = $labels;
-//     $args->label = $labels->name;
-
-    // Set menu icon
-    $args->menu_icon = 'dashicons-clock';
-
-    // Modify post type object
-    $wp_post_types[$post_type] = $args;
-}
-add_action( 'registered_post_type', 'wpse_65075_modify_timeline_menu_icon', 10, 2 );
-
-// renommer Timeline Express en Timeline dans le menu
-function startup_reloaded_timeline_js() {
-    if ( is_plugin_active('timeline-express/timeline-express.php')) { ?>
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                jQuery("#menu-posts-te_announcements .wp-menu-name").html("Timeline");
-            });
-        </script>
-    <?php }
-}
-
-add_action('admin_footer', 'startup_reloaded_timeline_js');
-
 ?>
