@@ -72,19 +72,3 @@
 #wp-fullscreen-modes {
     display: none;
 }
-
-/* Timeline */
-.post-type-te_announcements #about_the_author.postbox,
-.post-type-te_announcements .manage-column.column-icon,
-.post-type-te_announcements .manage-column.column-past_announcement,
-.post-type-te_announcements .manage-column.column-image,
-.post-type-te_announcements .image.column-image,
-.post-type-te_announcements .past_announcement.column-past_announcement,
-.post-type-te_announcements .icon.column-icon,
-.post-type-te_announcements .cmb-row.cmb-type-te-bootstrap-dropdown.cmb2-id-announcement-icon,
-.post-type-te_announcements .cmb-row.cmb-type-file.cmb2-id-announcement-image,
-.post-type-te_announcements ul.subsubsub li:nth-child(3) {
-display: none;
-}
-
-.post-type-te_announcements .manage-column.column-color{text-align: center}
