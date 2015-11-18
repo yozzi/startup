@@ -265,7 +265,9 @@ add_filter( 'contextual_help', 'startup_reloaded_remove_help_tabs', 999, 3 );
 /************************** Retirer la barre d'admin sur fontend */
 
 function startup_reloaded_retirer_barre() {
-    add_filter('show_admin_bar', '__return_false');
+    //if ( !current_user_can( 'manage_options' ) ) {
+        add_filter('show_admin_bar', '__return_false');
+    //}
 }
 
 add_action( 'plugins_loaded', 'startup_reloaded_retirer_barre' );
