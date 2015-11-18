@@ -31,7 +31,7 @@ function startup_reloaded_plugin_updater() {
 	}
 }
 
-add_action( 'init', 'startup_reloaded_plugin_updater' );
+//add_action( 'init', 'startup_reloaded_plugin_updater' );
 
 /************************** Includes */
 
