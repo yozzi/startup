@@ -80,6 +80,14 @@ function startup_reloaded_custom_admin_head_everyone() {
 
 add_action('admin_head', 'startup_reloaded_custom_admin_head_everyone');
 
+/************************** Enqueue scripts and styles */
+
+function startup_scripts() {
+    wp_enqueue_script( 'stackblur', plugins_url( '/js/stackblur.min.js', __FILE__ ), array( ), '', false );
+}
+
+add_action( 'admin_enqueue_scripts', 'startup_scripts' );
+
 /************************** Rediriger vers une autre page au login */
 
 function startup_reloaded_login_redirect( $redirect_to, $request, $user ) {
