@@ -1,5 +1,6 @@
 <?php 
     $current_user = wp_get_current_user();
+    $img  = get_user_meta( $current_user->ID, '_startup_user_avatar', true );
 //    echo 'Username: ' . $current_user->user_login . '<br />';
 //    echo 'User email: ' . $current_user->user_email . '<br />';
 //    echo 'User first name: ' . $current_user->user_firstname . '<br />';
@@ -22,21 +23,22 @@
 
 					<div class="postbox">
                         
-                        <div class="hero">
-                          <canvas class="hero_background" width="200" height="200" id="heroCanvas"></canvas>
-                        </div>
-                        
-                        <?php 
-
-                            $img  = get_user_meta( $current_user->ID, '_startup_user_avatar', true );
+                        <div class="hero"> 
+                            <?php 
 
                             if ( $img ) { ?>
+                                <canvas class="hero_background" width="200" height="200" id="heroCanvas"></canvas>
                                 <img src="<?php echo $img ?>" alt="Avatar" class="img-circle avatar" />
+                            <?php } else { ?>
+                                <img src="" alt="Avatar" class="img-circle avatar" />
                             <?php }
 
                         ?>
+                        <h1><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname ?></h1>
+                        </div>
+                        
+                        
 
-						<h3><span><?php esc_attr_e( 'Main Content Header', 'wp_admin_style' ); ?></span></h3>
 
 						<div class="inside">
 							<p><?php esc_attr_e(
