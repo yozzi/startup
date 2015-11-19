@@ -396,6 +396,18 @@ function startup_reloaded_hide_update_notice_to_all_but_admin_users() {
 add_action( 'admin_head', 'startup_reloaded_hide_update_notice_to_all_but_admin_users', 1 );
 
 
+/************************** Load Font Awesome in Backend */
+
+function startup_reloaded_fontawesome() { ?>
+<style>
+ @font-face {
+     font-family: FontAwesome;
+     src: url(<?php plugins_url( '/lib/font-awesome/fonts/fontawesome-webfont.woff', __FILE__ ) ?>);
+ }
+</style>
+<?php }
+
+add_action('admin-head', 'startup_reloaded_fontawesome');
 
 
 /************************** Help */
@@ -410,16 +422,42 @@ function startup_reloaded_help_init(){
 
 add_action('admin_menu', 'startup_reloaded_help');
 
-function startup_reloaded_add_menu_icon_help(){ ?>
+
+/************************** Font Awesome in the Backend */
+
+function startup_reloaded_font_awesome(){ ?>
     <style>
-        #toplevel_page_startup-help .dashicons-admin-generic::before {
-            content: "\f339";
-            /*color: #555 !important;*/
+         @font-face {
+             font-family: FontAwesome;
+             src: url(<?php echo plugins_url( '/lib/font-awesome/fonts/fontawesome-webfont.woff', __FILE__ ) ?>);
+         }
+    </style>
+<?php }
+
+add_action( 'admin_head', 'startup_reloaded_font_awesome' );
+
+/************************** User Profile */
+
+function startup_reloaded_profile(){
+    add_menu_page( 'StartUp Profile', 'Profile', 'read', 'startup-profile', 'startup_reloaded_profile_init' );
+}
+
+function startup_reloaded_profile_init(){
+    require('inc/profile-content.php');
+}
+
+add_action('admin_menu', 'startup_reloaded_profile');
+
+function startup_reloaded_add_menu_icon_profile(){ ?>
+    <style>
+        #toplevel_page_startup-profile .dashicons-admin-generic::before {
+            font-family:  FontAwesome !important;
+            content: '\f192';
         }
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_reloaded_add_menu_icon_help' );
+add_action( 'admin_head', 'startup_reloaded_add_menu_icon_profile' );
 
 /************************** Blog Shortcode */
 function startup_reloaded_blog_shortcode( $atts ) {
@@ -501,4 +539,85 @@ function ssid_add() {
 
 add_action('admin_init', 'ssid_add');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Profile Metaboxes
+function startup_profile_meta() {
+    
+	// Start with an underscore to hide fields from custom fields list
+	$prefix = '_startup_user_';
+
+	$cmb_user = new_cmb2_box( array(
+		'id'               => $prefix . 'edit',
+		'title'            => __( 'User Profile Metabox', 'cmb2' ),
+		'object_types'     => array( 'user' ), // Tells CMB2 to use user_meta vs post_meta
+		'show_names'       => true,
+		'new_user_section' => 'add-new-user', // where form will show on new user page. 'add-existing-user' is only other valid option.
+	) );
+	$cmb_user->add_field( array(
+		'name'     => __( 'Extra Info', 'cmb2' ),
+		'desc'     => __( 'field description (optional)', 'cmb2' ),
+		'id'       => $prefix . 'extra_info',
+		'type'     => 'title',
+		'on_front' => false,
+	) );
+	$cmb_user->add_field( array(
+		'name'    => __( 'Avatar', 'cmb2' ),
+		'desc'    => __( 'field description (optional)', 'cmb2' ),
+		'id'      => $prefix . 'avatar',
+		'type'    => 'file',
+	) );
+	$cmb_user->add_field( array(
+		'name' => __( 'Facebook URL', 'cmb2' ),
+		'desc' => __( 'field description (optional)', 'cmb2' ),
+		'id'   => $prefix . 'facebookurl',
+		'type' => 'text_url',
+	) );
+	$cmb_user->add_field( array(
+		'name' => __( 'Twitter URL', 'cmb2' ),
+		'desc' => __( 'field description (optional)', 'cmb2' ),
+		'id'   => $prefix . 'twitterurl',
+		'type' => 'text_url',
+	) );
+	$cmb_user->add_field( array(
+		'name' => __( 'Google+ URL', 'cmb2' ),
+		'desc' => __( 'field description (optional)', 'cmb2' ),
+		'id'   => $prefix . 'googleplusurl',
+		'type' => 'text_url',
+	) );
+	$cmb_user->add_field( array(
+		'name' => __( 'Linkedin URL', 'cmb2' ),
+		'desc' => __( 'field description (optional)', 'cmb2' ),
+		'id'   => $prefix . 'linkedinurl',
+		'type' => 'text_url',
+	) );
+	$cmb_user->add_field( array(
+		'name' => __( 'User Field', 'cmb2' ),
+		'desc' => __( 'field description (optional)', 'cmb2' ),
+		'id'   => $prefix . 'user_text_field',
+		'type' => 'text',
+	) );
+}
+
+add_action( 'cmb2_admin_init', 'startup_profile_meta' );
 ?>
