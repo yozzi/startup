@@ -1,9 +1,9 @@
 <?php 
     $current_user = wp_get_current_user(); //grid_thumb
-    $img  = get_user_meta( $current_user->ID, '_startup_user_avatar', true );
+    $img  = wp_get_attachment_image_src( get_user_meta( $current_user->ID, '_startup_user_avatar_id', 1 ), 'grid_thumb' );
     if ( !$img ) {
         $upload = true;
-        $img =  plugins_url( '../img/profile.png', __FILE__ );
+        $img[0] =  plugins_url( '../img/profile.png', __FILE__ );
     }
     $bio  = get_user_meta( $current_user->ID, '_startup_user_user_text_field', true );
 //    echo 'Username: ' . $current_user->user_login . '<br />';
@@ -31,7 +31,7 @@
                         <div class="hero">
                             <canvas class="hero_background" width="200" height="200" id="heroCanvas"></canvas>
                             <div>
-                                <img src="<?php echo $img ?>" alt="Avatar" class="img-circle avatar" />
+                                <img src="<?php echo $img[0] ?>" alt="Avatar" class="img-circle avatar" />
                                 <?php if ( $upload == true ) { ?>                           
                                     <a href="<?php echo admin_url() ?>/profile.php#cmb2-metabox-_startup_user_edit" title="<?php _e( 'Upload profile picture' ); ?>" class="hero_upload"><span class="dashicons dashicons-camera"></span></a>
                                 <?php } ?>
@@ -51,6 +51,7 @@
 						<div class="inside">
                             <?php if ( $bio ) { ?>
                                 <p><?php echo $bio ?></p>
+                            <div style="text-align:right"><a class="button-secondary" href="<?php echo admin_url() ?>/profile.php" title="<?php _e( 'Edit' ); ?>"><?php _e( 'Edit' ); ?></a></div>
                             <?php } ?>
                             
 						</div>
@@ -109,7 +110,7 @@
       var canvasContext = canvas.getContext('2d');
 
       var canvasBackground = new Image();
-      canvasBackground.src = "<?php echo $img ?>";
+      canvasBackground.src = "<?php echo $img[0] ?>";
 
       var drawBlur = function() {
         var w = canvas.width;
