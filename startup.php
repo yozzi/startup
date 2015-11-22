@@ -82,18 +82,26 @@ add_action('admin_head', 'startup_reloaded_custom_admin_head_everyone');
 
 /************************** Enqueue scripts and styles */
 
-function startup_scripts() {
+function startup_scripts_admin() {
     wp_enqueue_script( 'stackblur', plugins_url( '/js/stackblur.min.js', __FILE__ ), array( ), '', false );
 }
 
-add_action( 'admin_enqueue_scripts', 'startup_scripts' );
+add_action( 'admin_enqueue_scripts', 'startup_scripts_admin' );
+
+function startup_scripts_login() {
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'vegas', plugins_url( '/js/vegas.min.js', __FILE__ ), array( ), '', true );
+    wp_enqueue_style( 'vegas', plugins_url( '/css/vegas.min.css', __FILE__ ) );
+}
+
+add_action( 'login_enqueue_scripts', 'startup_scripts_login' );
 
 /************************** Rediriger vers une autre page au login */
 
 function startup_reloaded_login_redirect( $redirect_to, $request, $user ) {
     //if ( is_array( $user->roles ) ) {
         //if ( in_array( 'owner', $user->roles ) ) {
-            return admin_url( 'edit.php?post_type=page' );
+            return admin_url( 'admin.php?page=startup-wall' );
        // } else {
        //     return admin_url();
        //}
@@ -446,26 +454,26 @@ add_action( 'admin_head', 'startup_reloaded_font_awesome' );
 
 /************************** User Profile */
 
-function startup_reloaded_profile(){
-    add_menu_page( 'StartUp Profile', 'Profile', 'read', 'startup-profile', 'startup_reloaded_profile_init' );
+function startup_reloaded_wall(){
+    add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_reloaded_wall_init', '', 0 );
 }
 
-function startup_reloaded_profile_init(){
-    require('inc/profile-content.php');
+function startup_reloaded_wall_init(){
+    require('inc/wall.php');
 }
 
-add_action('admin_menu', 'startup_reloaded_profile');
+add_action('admin_menu', 'startup_reloaded_wall');
 
-function startup_reloaded_add_menu_icon_profile(){ ?>
+function startup_reloaded_add_menu_icon_wall(){ ?>
     <style>
-        #toplevel_page_startup-profile .dashicons-admin-generic::before {
+        #toplevel_page_startup-wall .dashicons-admin-generic::before {
             font-family:  FontAwesome !important;
             content: '\f192';
         }
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_reloaded_add_menu_icon_profile' );
+add_action( 'admin_head', 'startup_reloaded_add_menu_icon_wall' );
 
 /************************** Blog Shortcode */
 function startup_reloaded_blog_shortcode( $atts ) {
@@ -628,4 +636,42 @@ function startup_profile_meta() {
 }
 
 add_action( 'cmb2_admin_init', 'startup_profile_meta' );
+
+
+// Add code to footer
+
+// Login Vegas background
+function startup_footer_scripts() {
+    $login_01 = of_get_option( 'login_01' );
+    $login_02 = of_get_option( 'login_02' );
+    $login_03 = of_get_option( 'login_03' );
+    $login_04 = of_get_option( 'login_04' );
+    $login_05 = of_get_option( 'login_05' );
+    
+    if ( $login_01 | $login_02 | $login_03 | $login_04 | $login_05 ) {
 ?>
+    <script type="text/javascript">
+        jQuery(function() {
+            jQuery('body').vegas({
+                slides: [
+                    <?php if( $login_01 ) { ?>{ src: '<?php echo $login_01 ?>' },<?php } ?>
+                    <?php if( $login_02 ) { ?>{ src: '<?php echo $login_02 ?>' },<?php } ?>
+                    <?php if( $login_03 ) { ?>{ src: '<?php echo $login_03 ?>' },<?php } ?>
+                    <?php if( $login_04 ) { ?>{ src: '<?php echo $login_04 ?>' },<?php } ?>
+                    <?php if( $login_05 ) { ?>{ src: '<?php echo $login_05 ?>' },<?php } ?>
+                ]
+            });
+        });
+    </script>
+<?php } else { ?>
+    <script type="text/javascript">
+        jQuery(function() {
+             jQuery('body').css('background', 'orangered');
+        });
+    </script>       
+<?php }
+                                                                     
+}
+
+add_action( 'login_footer', 'startup_footer_scripts' );
+ ?>

@@ -1,6 +1,11 @@
 <?php 
-    $current_user = wp_get_current_user();
+    $current_user = wp_get_current_user(); //grid_thumb
     $img  = get_user_meta( $current_user->ID, '_startup_user_avatar', true );
+    if ( !$img ) {
+        $upload = true;
+        $img =  plugins_url( '../img/profile.png', __FILE__ );
+    }
+    $bio  = get_user_meta( $current_user->ID, '_startup_user_user_text_field', true );
 //    echo 'Username: ' . $current_user->user_login . '<br />';
 //    echo 'User email: ' . $current_user->user_email . '<br />';
 //    echo 'User first name: ' . $current_user->user_firstname . '<br />';
@@ -23,28 +28,31 @@
 
 					<div class="postbox">
                         
-                        <div class="hero"> 
-                            <?php 
-
-                            if ( $img ) { ?>
-                                <canvas class="hero_background" width="200" height="200" id="heroCanvas"></canvas>
+                        <div class="hero">
+                            <canvas class="hero_background" width="200" height="200" id="heroCanvas"></canvas>
+                            <div>
                                 <img src="<?php echo $img ?>" alt="Avatar" class="img-circle avatar" />
-                            <?php } else { ?>
-                                <img src="" alt="Avatar" class="img-circle avatar" />
-                            <?php }
-
-                        ?>
-                        <h1><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname ?></h1>
+                                <?php if ( $upload == true ) { ?>                           
+                                    <a href="<?php echo admin_url() ?>/profile.php#cmb2-metabox-_startup_user_edit" title="<?php _e( 'Upload profile picture' ); ?>" class="hero_upload"><span class="dashicons dashicons-camera"></span></a>
+                                <?php } ?>
+                            </div>
+                            <div class="hero_name">
+                                <?php if ( $current_user->user_firstname || $current_user->user_lastname ) { ?>
+                                    <h1><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname ?></h1>
+                                <?php } else { ?>
+                                    <a class="button-primary" href="<?php echo admin_url() ?>/profile.php" title="<?php _e( 'Tell us your name' ); ?>"><?php _e( 'Tell us your name' ); ?></a>
+                                <?php } ?>
+                            </div>
                         </div>
                         
                         
 
 
 						<div class="inside">
-							<p><?php esc_attr_e(
-									'WordPress started in 2003 with a single bit of code to enhance the typography of everyday writing and with fewer users than you can count on your fingers and toes. Since then it has grown to be the largest self-hosted blogging tool in the world, used on millions of sites and seen by tens of millions of people every day.',
-									'wp_admin_style'
-								); ?></p>
+                            <?php if ( $bio ) { ?>
+                                <p><?php echo $bio ?></p>
+                            <?php } ?>
+                            
 						</div>
 						<!-- .inside -->
 

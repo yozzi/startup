@@ -1,4 +1,5 @@
 /*Logo*/
+
 .wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item:before {
     content: none;
 }
@@ -36,14 +37,14 @@
     list-style-position: inside;
 }
 /*Top Menu*/
+
 #wpadminbar #wp-admin-bar-my-account.with-avatar #wp-admin-bar-user-actions>li {
     margin-left: 0;
 }
-edit.phpmedia="all"
-#wpadminbar #wp-admin-bar-user-actions>li {
+
+edit.phpmedia="all" #wpadminbar #wp-admin-bar-user-actions>li {
     margin-left: 0;
 }
-
 /*Responsive*/
 
 @media screen and (max-width: 782px) {
@@ -52,33 +53,57 @@ edit.phpmedia="all"
         display: none !important;
     }
 }
-
 /*Profile Page*/
 
 .hero {
-  position: relative;
-  width: 100%;
-  padding: 2em 0;
+    position: relative;
+    width: 100%;
+    padding: 120px 0;
+    text-align: center;
 }
-  .hero_background {
+
+.hero div {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.hero_upload {
+    position: absolute;
+    z-index: 3;
+    top: 200px;
+    text-decoration: none;
+    padding: 5px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 3px;
+    margin-left: -15px;
+}
+
+.hero_upload:hover {
+    background: #fff;
+}
+
+.hero_background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
-  }
+}
 
-.hero h1{
+.hero_name {
     z-index: 2;
     position: relative;
-    text-align: center;
+    color: #fff;
+}
+
+.hero_name h1 {
     padding-right: 0;
     color: #fff;
     font-weight: bold;
     font-size: 35px;
 }
-
 
 .img-circle {
     border-radius: 50%;
@@ -86,7 +111,7 @@ edit.phpmedia="all"
 
 .hero img.avatar {
     width: 250px;
-    border: 25px solid #fff;
+    border: 10px solid #fff;
     box-sizing: border-box;
     position: relative;
     margin: 0 auto;

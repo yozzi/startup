@@ -1,5 +1,6 @@
 body {
-    background: orangered !important;
+    background: rgba(255, 69, 0, 0.85);
+    height: auto;
 }
 
 #login {
