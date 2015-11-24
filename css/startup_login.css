@@ -1,6 +1,10 @@
 body {
-    background: rgba(255, 69, 0, 0.85);
-    height: auto;
+    background: transparent;
+}
+
+.vegas-overlay{
+    background: #ff4500 !important;
+    opacity: 0.85 !important;
 }
 
 #login {

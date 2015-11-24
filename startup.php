@@ -664,16 +664,24 @@ function startup_footer_scripts() {
                     <?php if( $login_03 ) { ?>{ src: '<?php echo $login_03 ?>' },<?php } ?>
                     <?php if( $login_04 ) { ?>{ src: '<?php echo $login_04 ?>' },<?php } ?>
                     <?php if( $login_05 ) { ?>{ src: '<?php echo $login_05 ?>' },<?php } ?>
-                ]
+                ],
+                overlay: true
             });
         });
     </script>
 <?php } else { ?>
     <script type="text/javascript">
         jQuery(function() {
-             jQuery('body').css('background', 'orangered');
+            jQuery('body').vegas({
+                slides: [
+                    { src: '<?php echo plugins_url( '/img/login/01.jpg', __FILE__ ) ?>' },
+                    { src: '<?php echo plugins_url( '/img/login/02.jpg', __FILE__ ) ?>' },
+                    { src: '<?php echo plugins_url( '/img/login/03.jpg', __FILE__ ) ?>' },
+                ],
+                overlay: true
+            });
         });
-    </script>       
+    </script>     
 <?php }
                                                                      
 }
