@@ -645,14 +645,16 @@ add_action( 'cmb2_admin_init', 'startup_profile_meta' );
 
 /************************** Style de la page login */
 
-function startup_reloaded_custom_login_head() {
+function startup_custom_login_head() {
     $overlay = of_get_option( 'login_overlay' );
     echo '<style type="text/css">';
+    echo '.vegas-overlay{';
     echo 'background:' . $overlay . '!important;';
+    echo '}';
     echo '</style>';
 }
 
-add_action('login_head', 'startup_reloaded_custom_login_head');
+add_action('login_head', 'startup_custom_login_head');
 
 // Add code to footer
 
