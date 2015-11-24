@@ -7,6 +7,11 @@ Version: 1.2.2
 Text Domain: startup
 */
 
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 //GitHub Plugin Updater
@@ -90,8 +95,8 @@ add_action( 'admin_enqueue_scripts', 'startup_scripts_admin' );
 
 function startup_scripts_login() {
     wp_enqueue_script( 'jquery' );
-    wp_enqueue_script( 'vegas', plugins_url( '/js/vegas.min.js', __FILE__ ), array( ), '', true );
-    wp_enqueue_style( 'vegas', plugins_url( '/css/vegas.min.css', __FILE__ ) );
+    wp_enqueue_script( 'vegas', plugins_url( '/lib/vegas/vegas.min.js', __FILE__ ), array( ), '', true );
+    wp_enqueue_style( 'vegas', plugins_url( '/lib/vegas/vegas.min.css', __FILE__ ) );
 }
 
 add_action( 'login_enqueue_scripts', 'startup_scripts_login' );
@@ -281,9 +286,9 @@ add_filter( 'contextual_help', 'startup_reloaded_remove_help_tabs', 999, 3 );
 /************************** Retirer la barre d'admin sur fontend */
 
 function startup_reloaded_retirer_barre() {
-    //if ( !current_user_can( 'manage_options' ) ) {
+    if ( !current_user_can( 'manage_options' ) ) {
         add_filter('show_admin_bar', '__return_false');
-    //}
+    }
 }
 
 add_action( 'plugins_loaded', 'startup_reloaded_retirer_barre' );
