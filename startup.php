@@ -45,7 +45,7 @@ function startup_reloaded_plugin_updater() {
 
 function startup_reloaded_includes() {
     if( !current_user_can( 'manage_options' ) ) {
-        require('inc/help.php');
+        require('inc/notices.php');
     }
 }
 
@@ -438,7 +438,7 @@ function startup_reloaded_help(){
 }
 
 function startup_reloaded_help_init(){
-    require('inc/help-content.php');
+    require('inc/help.php');
 }
 
 add_action('admin_menu', 'startup_reloaded_help');
