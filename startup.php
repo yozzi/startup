@@ -185,16 +185,16 @@ add_action('admin_menu', 'startup_reloaded_remove_admin_menus');
 /************************** Réorganiser le menu */
 //Pour que les pages appraîssent avant les post
 
-function startup_reloaded_custom_menu_order($menu_ord) {
-    if (!current_user_can('manage_options')) {
-        if (!$menu_ord) return true;
-        return array('edit.php?post_type=page', 'edit.php');
-    }
-}
+//function startup_reloaded_custom_menu_order($menu_ord) {
+//    if (!current_user_can('manage_options')) {
+//        if (!$menu_ord) return true;
+//        return array('edit.php?post_type=page', 'edit.php');
+//    }
+//}
 
-add_filter('custom_menu_order', 'startup_reloaded_custom_menu_order');
+//add_filter('custom_menu_order', 'startup_reloaded_custom_menu_order');
 
-add_filter('menu_order', 'startup_reloaded_custom_menu_order');
+//add_filter('menu_order', 'startup_reloaded_custom_menu_order');
 
 /************************** Retirer des éléments de la barre */
 
