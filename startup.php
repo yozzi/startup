@@ -700,4 +700,5 @@ function startup_footer_scripts() {
 }
 
 add_action( 'login_footer', 'startup_footer_scripts' );
- ?>
+
+?>
