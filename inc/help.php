@@ -141,7 +141,7 @@
             <td>StartUp Services <?php if ( is_plugin_active('startup-cpt-services/startup-cpt-services.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
         </tr>
         <tr class="alternate">
-            <td class="row-title">[pricing]</td>
+            <td class="row-title">[pricing-table]</td>
             <td>Pricing Table</td>
             <td>3 in a row</td>
             <td>StartUp Pricing Table <?php if ( is_plugin_active('startup-cpt-pricing-table/startup-cpt-pricing-table.php')) { ?><span class="dashicons dashicons-yes"></span><?php } ?></td>
