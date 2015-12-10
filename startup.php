@@ -443,20 +443,6 @@ function startup_reloaded_help_init(){
 
 add_action('admin_menu', 'startup_reloaded_help');
 
-
-/************************** Font Awesome in the Backend */
-
-function startup_reloaded_font_awesome(){ ?>
-    <style>
-         @font-face {
-             font-family: FontAwesome;
-             src: url(<?php echo plugins_url( '/lib/font-awesome/fonts/fontawesome-webfont.woff', __FILE__ ) ?>);
-         }
-    </style>
-<?php }
-
-add_action( 'admin_head', 'startup_reloaded_font_awesome' );
-
 /************************** User Profile */
 
 function startup_reloaded_wall(){
