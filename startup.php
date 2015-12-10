@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 //GitHub Plugin Updater
-function startup_reloaded_plugin_updater() {
+function startup_plugin_updater() {
 	include_once 'lib/updater.php';
 	//define( 'WP_GITHUB_FORCE_UPDATE', true );
 	if ( is_admin() ) {
@@ -36,36 +36,36 @@ function startup_reloaded_plugin_updater() {
 	}
 }
 
-//add_action( 'init', 'startup_reloaded_plugin_updater' );
+//add_action( 'init', 'startup_plugin_updater' );
 
 /************************** Includes */
 
 //Pubs pour les options
 //require('inc/options.php');
 
-function startup_reloaded_includes() {
+function startup_includes() {
     if( !current_user_can( 'manage_options' ) ) {
         require('inc/notices.php');
     }
 }
 
-add_action('admin_head', 'startup_reloaded_includes');
+add_action('admin_head', 'startup_includes');
 
 
 /************************** Style de la page de connexion */
 if (!is_plugin_active('theme-my-login/theme-my-login.php')){
-    function startup_reloaded_custom_login_style() {
+    function startup_custom_login_style() {
         echo '<style type="text/css">';
         include 'css/startup_login.css';
         echo '</style>';
     }
 
-add_action('login_head', 'startup_reloaded_custom_login_style');
+add_action('login_head', 'startup_custom_login_style');
 }
 
 /************************** Style de la zone admin */
 
-function startup_reloaded_custom_admin_head() {
+function startup_custom_admin_head() {
 	if( !current_user_can( 'manage_options' ) ) {
         echo '<style type="text/css">';
         include 'css/startup_admin.css';
@@ -73,17 +73,17 @@ function startup_reloaded_custom_admin_head() {
     }
 }
 
-add_action('admin_head', 'startup_reloaded_custom_admin_head');
+add_action('admin_head', 'startup_custom_admin_head');
 
 /************************** Style de la zone admin pour tout le monde */
 
-function startup_reloaded_custom_admin_head_everyone() {
+function startup_custom_admin_head_everyone() {
     echo '<style type="text/css">';
     include 'css/startup_admin_everyone.css';
     echo '</style>';
 }
 
-add_action('admin_head', 'startup_reloaded_custom_admin_head_everyone');
+add_action('admin_head', 'startup_custom_admin_head_everyone');
 
 /************************** Enqueue scripts and styles */
 
@@ -103,7 +103,7 @@ add_action( 'login_enqueue_scripts', 'startup_scripts_login' );
 
 /************************** Rediriger vers une autre page au login */
 
-function startup_reloaded_login_redirect( $redirect_to, $request, $user ) {
+function startup_login_redirect( $redirect_to, $request, $user ) {
     //if ( is_array( $user->roles ) ) {
         //if ( in_array( 'owner', $user->roles ) ) {
             return admin_url( 'admin.php?page=startup-wall' );
@@ -113,11 +113,11 @@ function startup_reloaded_login_redirect( $redirect_to, $request, $user ) {
     //}
 }
 
-add_filter( 'login_redirect', 'startup_reloaded_login_redirect', 10, 3 );
+add_filter( 'login_redirect', 'startup_login_redirect', 10, 3 );
 
 /************************** Retirer des éléments du menu */
 
-function startup_reloaded_remove_admin_menus (){
+function startup_remove_admin_menus (){
     //Retirer ICI des éléments pour tout les utilisateurs
     //Retirer le premier separateur
     global $menu;
@@ -171,34 +171,34 @@ function startup_reloaded_remove_admin_menus (){
     }
 }
 
-add_action('admin_menu', 'startup_reloaded_remove_admin_menus');
+add_action('admin_menu', 'startup_remove_admin_menus');
 
 /************************** Renommer des éléments du menu */
 
-//function startup_reloaded_edit_admin_menus() {
+//function startup_edit_admin_menus() {
 //    global $menu;
 //    $menu[5][0] = 'Blog'; // Change Posts to Blog
 //}
 //
-//add_action( 'admin_menu', 'startup_reloaded_edit_admin_menus' );
+//add_action( 'admin_menu', 'startup_edit_admin_menus' );
 
 /************************** Réorganiser le menu */
 //Pour que les pages appraîssent avant les post
 
-//function startup_reloaded_custom_menu_order($menu_ord) {
+//function startup_custom_menu_order($menu_ord) {
 //    if (!current_user_can('manage_options')) {
 //        if (!$menu_ord) return true;
 //        return array('edit.php?post_type=page', 'edit.php');
 //    }
 //}
 
-//add_filter('custom_menu_order', 'startup_reloaded_custom_menu_order');
+//add_filter('custom_menu_order', 'startup_custom_menu_order');
 
-//add_filter('menu_order', 'startup_reloaded_custom_menu_order');
+//add_filter('menu_order', 'startup_custom_menu_order');
 
 /************************** Retirer des éléments de la barre */
 
-function startup_reloaded_remove_admin_bar_links() {
+function startup_remove_admin_bar_links() {
     global $wp_admin_bar, $current_user;
 
     // To remove WordPress logo and related submenu items
@@ -237,11 +237,11 @@ function startup_reloaded_remove_admin_bar_links() {
     //$wp_admin_bar->remove_menu('my-account');
 }
 
-add_action( 'wp_before_admin_bar_render', 'startup_reloaded_remove_admin_bar_links' );
+add_action( 'wp_before_admin_bar_render', 'startup_remove_admin_bar_links' );
 
 /************************** Modifier le message "Howdy, " */
 
-function startup_reloaded_replace_howdy( $wp_admin_bar ) {
+function startup_replace_howdy( $wp_admin_bar ) {
     $my_account=$wp_admin_bar->get_node('my-account');
     $newtitle = str_replace( 'Salutations,', 'Vous êtes connecté en tant que', $my_account->title );            
     $wp_admin_bar->add_node(
@@ -252,50 +252,50 @@ function startup_reloaded_replace_howdy( $wp_admin_bar ) {
     );
 }
 
-add_filter( 'admin_bar_menu', 'startup_reloaded_replace_howdy',25 );
+add_filter( 'admin_bar_menu', 'startup_replace_howdy',25 );
 
 /************************** Retirer le panneau "Options de l'écran" */
 
-function startup_reloaded_panneau_options() {
+function startup_panneau_options() {
     if ( !current_user_can( 'manage_options' ) )
         add_filter('screen_options_show_screen', '__return_false');
 }
 
-add_action( 'plugins_loaded', 'startup_reloaded_panneau_options' );
+add_action( 'plugins_loaded', 'startup_panneau_options' );
 
 /************************** Désactiver le glisser déposer des boîtes */
 //Commenté car empêche le bon fonctionnement de beaucoup de choses
 
-//function startup_reloaded_disable_drag_metabox() {
+//function startup_disable_drag_metabox() {
 //    if (!current_user_can('manage_options')) {
 //        wp_deregister_script('postbox');
 //    }
 //}
 //
-//add_action( 'admin_init', 'startup_reloaded_disable_drag_metabox' );
+//add_action( 'admin_init', 'startup_disable_drag_metabox' );
 
 /************************** Retirer le lien vers l'aide */
 
-function startup_reloaded_remove_help_tabs($old_help, $screen_id, $screen){
+function startup_remove_help_tabs($old_help, $screen_id, $screen){
     $screen->remove_help_tabs();
     return $old_help;
 }
 
-add_filter( 'contextual_help', 'startup_reloaded_remove_help_tabs', 999, 3 );
+add_filter( 'contextual_help', 'startup_remove_help_tabs', 999, 3 );
 
 /************************** Retirer la barre d'admin sur fontend */
 
-function startup_reloaded_retirer_barre() {
+function startup_retirer_barre() {
     if ( !current_user_can( 'manage_options' ) ) {
         add_filter('show_admin_bar', '__return_false');
     }
 }
 
-add_action( 'plugins_loaded', 'startup_reloaded_retirer_barre' );
+add_action( 'plugins_loaded', 'startup_retirer_barre' );
 
 /************************** Ajouter lien yozz.net */
 
-function startup_reloaded_admin_bar_new_item() {
+function startup_admin_bar_new_item() {
     global $wp_admin_bar;
     $wp_admin_bar->add_menu(
         array(
@@ -306,58 +306,58 @@ function startup_reloaded_admin_bar_new_item() {
     );
 }
 
-add_action('wp_before_admin_bar_render', 'startup_reloaded_admin_bar_new_item', 10);
+add_action('wp_before_admin_bar_render', 'startup_admin_bar_new_item', 10);
 
 /************************** Modifier le numéro de version */
 
-function startup_reloaded_change_footer_version() {
+function startup_change_footer_version() {
     return 'Version 1.0';
 }
 
-add_filter( 'update_footer', 'startup_reloaded_change_footer_version', 9999 );
+add_filter( 'update_footer', 'startup_change_footer_version', 9999 );
 
 /************************** WordPress Admin change footer text */
 
-function startup_reloaded_remove_footer_admin () {
+function startup_remove_footer_admin () {
     echo 'Vous utilisez l\'application <a href="http://startup.yozz.net" target="_blank">StartUp</a> développée par <a href="http://yozz.net" target="_blank">yozz.net</a>';
 }
 
-add_filter('admin_footer_text', 'startup_reloaded_remove_footer_admin');
+add_filter('admin_footer_text', 'startup_remove_footer_admin');
 
 /************************** Ajouter un lien All Settings pour l'admin */
 
-//function startup_reloaded_all_settings_link() {
+//function startup_all_settings_link() {
 //    add_options_page(__('All Settings'), __('Adv. Settings'), 'administrator', 'options.php');
 //}
 //
-//add_action('admin_menu', 'startup_reloaded_all_settings_link');
+//add_action('admin_menu', 'startup_all_settings_link');
 
 /************************** Modifier TinyMCE */
 
 // Utiliser l'éditeur WYSIWYG par défaut
-function startup_reloaded_default_editor() {
+function startup_default_editor() {
     if (!current_user_can('manage_options')) {
         $r = 'tinymce'; // html or tinymce
         return $r;
     }
 }
 
-add_filter( 'wp_default_editor', 'startup_reloaded_default_editor' );
+add_filter( 'wp_default_editor', 'startup_default_editor' );
 
 // Utiliser l'éditeur HTML par défaut pour l'admin
-function startup_reloaded_admin_default_editor() {
+function startup_admin_default_editor() {
     if (current_user_can('manage_options')) {
         $r = 'html'; // html or tinymce
         return $r;
     }
 }
 
-add_filter( 'wp_default_editor', 'startup_reloaded_admin_default_editor' );
+add_filter( 'wp_default_editor', 'startup_admin_default_editor' );
 
 /************************** Modifier la page profil */
 
 //Retirer des infos avec jQuery
-function startup_reloaded_hide_personal_options(){
+function startup_hide_personal_options(){
     if (!current_user_can('manage_options')) {
         echo "
             <script type='text/javascript'>
@@ -383,11 +383,11 @@ function startup_reloaded_hide_personal_options(){
     }
 }
 
-add_action('admin_head','startup_reloaded_hide_personal_options');
+add_action('admin_head','startup_hide_personal_options');
 
 //Pour référence
 //Ajouter les champs dans informations de contact
-//function startup_reloaded_extended_contact_info($user_contactmethods) {  
+//function startup_extended_contact_info($user_contactmethods) {  
 //    $user_contactmethods = array(
 //        'building' => __('Building'),
 //        'room' => __('Room'),
@@ -396,30 +396,30 @@ add_action('admin_head','startup_reloaded_hide_personal_options');
 //    return $user_contactmethods;
 //}  
 //
-//add_filter('user_contactmethods', 'startup_reloaded_extended_contact_info');
+//add_filter('user_contactmethods', 'startup_extended_contact_info');
 
 //Pour référence
 //Retirer le choix de couleurs
-//function startup_reloaded_admin_del_color_options() {
+//function startup_admin_del_color_options() {
 //   global $_wp_admin_css_colors;
 //   $_wp_admin_css_colors = 0;
 //}
 
-//add_action('admin_head', 'startup_reloaded_admin_del_color_options');
+//add_action('admin_head', 'startup_admin_del_color_options');
 
 //Désactiver les notifications de mise-à-jour de WordPress pour les non-admin
-function startup_reloaded_hide_update_notice_to_all_but_admin_users() {
+function startup_hide_update_notice_to_all_but_admin_users() {
     if (!current_user_can('update_core')) {
         remove_action( 'admin_notices', 'update_nag', 3 );
     }
 }
 
-add_action( 'admin_head', 'startup_reloaded_hide_update_notice_to_all_but_admin_users', 1 );
+add_action( 'admin_head', 'startup_hide_update_notice_to_all_but_admin_users', 1 );
 
 
 /************************** Load Font Awesome in Backend */
 
-function startup_reloaded_fontawesome() { ?>
+function startup_fontawesome() { ?>
 <style>
  @font-face {
      font-family: FontAwesome;
@@ -428,34 +428,34 @@ function startup_reloaded_fontawesome() { ?>
 </style>
 <?php }
 
-add_action('admin-head', 'startup_reloaded_fontawesome');
+add_action('admin-head', 'startup_fontawesome');
 
 
 /************************** Help */
 
-function startup_reloaded_help(){
-    add_menu_page( 'StartUp Help', 'Help', 'read', 'startup-help', 'startup_reloaded_help_init' );
+function startup_help(){
+    add_menu_page( 'StartUp Help', 'Help', 'read', 'startup-help', 'startup_help_init' );
 }
 
-function startup_reloaded_help_init(){
+function startup_help_init(){
     require('inc/help.php');
 }
 
-add_action('admin_menu', 'startup_reloaded_help');
+add_action('admin_menu', 'startup_help');
 
 /************************** User Profile */
 
-function startup_reloaded_wall(){
-    add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_reloaded_wall_init', '', 0 );
+function startup_wall(){
+    add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_wall_init', '', 0 );
 }
 
-function startup_reloaded_wall_init(){
+function startup_wall_init(){
     require('inc/wall.php');
 }
 
-add_action('admin_menu', 'startup_reloaded_wall');
+add_action('admin_menu', 'startup_wall');
 
-function startup_reloaded_add_menu_icon_wall(){ ?>
+function startup_add_menu_icon_wall(){ ?>
     <style>
         #toplevel_page_startup-wall .dashicons-admin-generic::before {
             font-family:  FontAwesome !important;
@@ -464,10 +464,10 @@ function startup_reloaded_add_menu_icon_wall(){ ?>
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_reloaded_add_menu_icon_wall' );
+add_action( 'admin_head', 'startup_add_menu_icon_wall' );
 
 /************************** Blog Shortcode */
-function startup_reloaded_blog_shortcode( $atts ) {
+function startup_blog_shortcode( $atts ) {
 
 	// Attributes
     $atts = shortcode_atts(array(
@@ -479,7 +479,7 @@ function startup_reloaded_blog_shortcode( $atts ) {
         require get_template_directory() . '/template-parts/content-blog.php';
         return ob_get_clean();    
 }
-add_shortcode( 'blog', 'startup_reloaded_blog_shortcode' );
+add_shortcode( 'blog', 'startup_blog_shortcode' );
 
 //Remove emoji
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
