@@ -416,20 +416,18 @@ function startup_hide_update_notice_to_all_but_admin_users() {
 
 add_action( 'admin_head', 'startup_hide_update_notice_to_all_but_admin_users', 1 );
 
+/************************** Font Awesome in the Backend */
 
-/************************** Load Font Awesome in Backend */
-
-function startup_fontawesome() { ?>
-<style>
- @font-face {
-     font-family: FontAwesome;
-     src: url(<?php plugins_url( '/lib/font-awesome/fonts/fontawesome-webfont.woff', __FILE__ ) ?>);
- }
-</style>
+function startup_font_awesome(){ ?>
+    <style>
+         @font-face {
+             font-family: FontAwesome;
+             src: url(<?php echo plugins_url( '/lib/font-awesome/fonts/fontawesome-webfont.woff', __FILE__ ) ?>);
+         }
+    </style>
 <?php }
 
-add_action('admin-head', 'startup_fontawesome');
-
+add_action( 'admin_head', 'startup_font_awesome' );
 
 /************************** Help */
 
