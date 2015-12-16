@@ -58,7 +58,7 @@ function startup_replace_howdy( $wp_admin_bar ) {
 
 add_filter( 'admin_bar_menu', 'startup_replace_howdy',25 );
 
-/************************** Retirer la barre d'admin sur fontend */
+/************************** Retirer la barre d'admin sur frontend */
 
 function startup_retirer_barre() {
     if ( !current_user_can( 'manage_options' ) ) {
