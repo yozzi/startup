@@ -17,6 +17,7 @@ What I do:
 * Add a Help page
 * Add a Blog shortcode with Shortcake support
 * Add a post ID column
+* Add a notice for customer support
 * A lot of other things and more to come
 
 Plugin designed to work with [StartUp Reloaded](https://github.com/yozzi/startup-reloaded) WordPress theme.
