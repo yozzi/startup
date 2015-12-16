@@ -1,5 +1,4 @@
 <?php 
-/************************** Créer les pages pour chaque option */
 
 /* Class Référence   
 <h1>Hello World!</h1>

@@ -1,12 +1,25 @@
 <?php
-/************************** Messages d'aide en haut de chaque page */
 
 function startup_reloaded_admin_notice(){
-echo '<div class="error">
-<p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a>.</p>
-</div>';
+    if( !current_user_can( 'manage_options' ) ) {
+        echo '<div class="error">
+        <p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a>.</p>
+        </div>';
+    }
 }
+
 add_action('admin_notices', 'startup_reloaded_admin_notice');
+
+
+
+
+
+
+
+
+
+
+
 
 // Notice avec option Cacher
 
@@ -17,7 +30,7 @@ add_action('admin_notices', 'startup_reloaded_admin_notice');
 //         $user_id = $current_user->ID;
 //         /* Check that the user hasn't already clicked to ignore the message */
 // 	if ( ! get_user_meta($user_id, 'example_ignore_notice') ) {
-//         echo '<div class="error"><p>'; 
+//        echo '<div class="error"><p>'; 
 //         printf(__('Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a> et recevez une réponse rapidement. | <a href="%1$s">Cacher ce message</a>'), '?example_nag_ignore=0');
 //         echo "</p></div>";
 // 	}
@@ -33,4 +46,3 @@ add_action('admin_notices', 'startup_reloaded_admin_notice');
 //              add_user_meta($user_id, 'example_ignore_notice', 'true', true);
 // 	}
 // }
-?>

@@ -1,11 +1,12 @@
-<?php 
-    $current_user = wp_get_current_user(); //grid_thumb
-    $img  = wp_get_attachment_image_src( get_user_meta( $current_user->ID, '_startup_user_avatar_id', 1 ), 'grid_thumb' );
-    if ( !$img ) {
-        $upload = true;
-        $img[0] =  plugins_url( '../img/profile.png', __FILE__ );
-    }
-    $bio  = get_user_meta( $current_user->ID, '_startup_user_user_text_field', true );
+<?php
+
+$current_user = wp_get_current_user(); //grid_thumb
+$img  = wp_get_attachment_image_src( get_user_meta( $current_user->ID, '_startup_user_avatar_id', 1 ), 'grid_thumb' );
+if ( !$img ) {
+    $upload = true;
+    $img[0] =  plugins_url( '../img/profile.png', __FILE__ );
+}
+$bio  = get_user_meta( $current_user->ID, '_startup_user_user_text_field', true );
 //    echo 'Username: ' . $current_user->user_login . '<br />';
 //    echo 'User email: ' . $current_user->user_email . '<br />';
 //    echo 'User first name: ' . $current_user->user_firstname . '<br />';
