@@ -27,11 +27,13 @@ add_action('login_head', 'startup_custom_login_head');
 
 // Login Vegas background
 function startup_footer_scripts() {
-    $login_01 = of_get_option( 'login_01' );
-    $login_02 = of_get_option( 'login_02' );
-    $login_03 = of_get_option( 'login_03' );
-    $login_04 = of_get_option( 'login_04' );
-    $login_05 = of_get_option( 'login_05' );
+    if ( wp_get_theme() == 'StartUp Reloaded' ) {
+        $login_01 = of_get_option( 'login_01' );
+        $login_02 = of_get_option( 'login_02' );
+        $login_03 = of_get_option( 'login_03' );
+        $login_04 = of_get_option( 'login_04' );
+        $login_05 = of_get_option( 'login_05' );
+    }
     
     if ( $login_01 | $login_02 | $login_03 | $login_04 | $login_05 ) {
 ?>
