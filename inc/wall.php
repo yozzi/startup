@@ -1,19 +1,24 @@
 <?php
 
-$current_user = wp_get_current_user(); //grid_thumb
-$img  = wp_get_attachment_image_src( get_user_meta( $current_user->ID, '_startup_user_avatar_id', 1 ), 'grid_thumb' );
-if ( !$img ) {
-    $upload = true;
-    $img[0] =  plugins_url( '../img/profile.png', __FILE__ );
+function startup_wall(){
+    add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_wall_init', '', 0 );
 }
-$bio  = get_user_meta( $current_user->ID, '_startup_user_user_text_field', true );
-//    echo 'Username: ' . $current_user->user_login . '<br />';
-//    echo 'User email: ' . $current_user->user_email . '<br />';
-//    echo 'User first name: ' . $current_user->user_firstname . '<br />';
-//    echo 'User last name: ' . $current_user->user_lastname . '<br />';
-//    echo 'User display name: ' . $current_user->display_name . '<br />';
-//    echo 'User ID: ' . $current_user->ID . '<br />';
-//    print_r($current_user);
+
+function startup_wall_init(){
+    $current_user = wp_get_current_user(); //grid_thumb
+    $img  = wp_get_attachment_image_src( get_user_meta( $current_user->ID, '_startup_user_avatar_id', 1 ), 'grid_thumb' );
+    if ( !$img ) {
+        $upload = true;
+        $img[0] =  plugins_url( '../img/profile.png', __FILE__ );
+    }
+    $bio  = get_user_meta( $current_user->ID, '_startup_user_user_text_field', true );
+    //    echo 'Username: ' . $current_user->user_login . '<br />';
+    //    echo 'User email: ' . $current_user->user_email . '<br />';
+    //    echo 'User first name: ' . $current_user->user_firstname . '<br />';
+    //    echo 'User last name: ' . $current_user->user_lastname . '<br />';
+    //    echo 'User display name: ' . $current_user->display_name . '<br />';
+    //    echo 'User ID: ' . $current_user->ID . '<br />';
+    //    print_r($current_user);
  ?>
 
 <div class='wrap'>
@@ -105,22 +110,36 @@ $bio  = get_user_meta( $current_user->ID, '_startup_user_user_text_field', true 
 </div>
 
 <script type="text/javascript">
-      var BLUR_RADIUS = 100;
+    var BLUR_RADIUS = 100;
 
-      var canvas = document.getElementById("heroCanvas");
-      var canvasContext = canvas.getContext('2d');
+    var canvas = document.getElementById("heroCanvas");
+    var canvasContext = canvas.getContext('2d');
 
-      var canvasBackground = new Image();
-      canvasBackground.src = "<?php echo $img[0] ?>";
+    var canvasBackground = new Image();
+    canvasBackground.src = "<?php echo $img[0] ?>";
 
-      var drawBlur = function() {
+    var drawBlur = function() {
         var w = canvas.width;
         var h = canvas.height;
         canvasContext.drawImage(canvasBackground, 0, 0, w, h);
         stackBlurCanvasRGBA('heroCanvas', 0, 0, w, h, BLUR_RADIUS);
-      };
+    };
 
-      canvasBackground.onload = function() {
+    canvasBackground.onload = function() {
         drawBlur();
-      }
+    }
 </script>
+<?php }
+
+add_action('admin_menu', 'startup_wall');
+
+function startup_add_menu_icon_wall(){ ?>
+    <style>
+        #toplevel_page_startup-wall .dashicons-admin-generic::before {
+            font-family:  FontAwesome !important;
+            content: '\f192';
+        }
+    </style>
+<?php }
+
+add_action( 'admin_head', 'startup_add_menu_icon_wall' );

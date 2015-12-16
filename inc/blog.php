@@ -1,6 +1,7 @@
 <?php
 
 /************************** Blog Shortcode */
+
 function startup_blog_shortcode( $atts ) {
 
 	// Attributes

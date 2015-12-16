@@ -10,17 +10,6 @@ function startup_reloaded_admin_notice(){
 
 add_action('admin_notices', 'startup_reloaded_admin_notice');
 
-
-
-
-
-
-
-
-
-
-
-
 // Notice avec option Cacher
 
 //add_action('admin_notices', 'yozz_admin_notice');

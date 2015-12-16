@@ -10,7 +10,6 @@
 <div id='icon-options-general' class='icon32'><h1>Hello World!</h1></div>
 */
 
-
 /************************** Blog */
 
 function startup_reloaded_blog(){

@@ -42,38 +42,7 @@ require('inc/display.php');
 
 require('inc/settings.php');
 
-/************************** Help */
+require('inc/help.php');
 
-function startup_help(){
-    add_menu_page( 'StartUp Help', 'Help', 'read', 'startup-help', 'startup_help_init' );
-}
-
-function startup_help_init(){
-    require('inc/help.php');
-}
-
-add_action('admin_menu', 'startup_help');
-
-/************************** Wall */
-
-function startup_wall(){
-    add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_wall_init', '', 0 );
-}
-
-function startup_wall_init(){
-    require('inc/wall.php');
-}
-
-add_action('admin_menu', 'startup_wall');
-
-function startup_add_menu_icon_wall(){ ?>
-    <style>
-        #toplevel_page_startup-wall .dashicons-admin-generic::before {
-            font-family:  FontAwesome !important;
-            content: '\f192';
-        }
-    </style>
-<?php }
-
-add_action( 'admin_head', 'startup_add_menu_icon_wall' );
+require('inc/wall.php');
 ?>

@@ -1,7 +1,5 @@
 <?php
 
-/************************** Modifier TinyMCE */
-
 // Utiliser l'éditeur WYSIWYG par défaut
 function startup_default_editor() {
     if (!current_user_can('manage_options')) {
