@@ -2,16 +2,6 @@
 
 /************************** Style de la page login */
 
-if (!is_plugin_active('theme-my-login/theme-my-login.php')){
-    function startup_custom_login_style() {
-        echo '<style type="text/css">';
-        include '/../css/startup_login.css';
-        echo '</style>';
-    }
-
-add_action('login_head', 'startup_custom_login_style');
-}
-
 function startup_custom_login_head() {
     if ( wp_get_theme() == 'StartUp Reloaded' ) {
         $overlay = of_get_option( 'login_overlay' );
