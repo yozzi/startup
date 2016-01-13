@@ -35,7 +35,7 @@ if ( wp_get_theme() == 'StartUp Reloaded' ) {
             }
         }
 
-    add_action( 'init', 'shortcode_ui_detection' );
+        add_action( 'init', 'shortcode_ui_detection' );
     }
 
     function startup_shortcode_ui() {
