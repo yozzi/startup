@@ -5,6 +5,7 @@ Description: Le plugin pour les fonctions de base de StartUp Reloaded
 Author: Yann Caplain
 Version: 1.2.2
 Text Domain: startup
+Domain Path: /languages
 */
 
 // If this file is called directly, abort.
