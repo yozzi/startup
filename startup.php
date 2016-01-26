@@ -3,7 +3,7 @@
 Plugin Name: StartUp
 Description: Le plugin pour les fonctions de base de StartUp Reloaded
 Author: Yann Caplain
-Version: 1.2.2
+Version: 1.0.0
 Text Domain: startup
 Domain Path: /languages
 */
