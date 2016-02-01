@@ -13,6 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+//Include this to check if a plugin is activated with is_plugin_active
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 //require('inc/updater.php');
