@@ -12,9 +12,9 @@ function startup_custom_login_head() {
         echo '</style>';
     }
 }
-
-add_action('login_head', 'startup_custom_login_head');
-
+if ( !is_plugin_active('theme-my-login/theme-my-login.php')) {
+    add_action('login_head', 'startup_custom_login_head');
+}
 // Add code to footer
 
 // Login Vegas background
@@ -64,5 +64,6 @@ function startup_footer_scripts() {
 <?php }
                                                                      
 }
-
-add_action( 'login_footer', 'startup_footer_scripts' );
+if ( !is_plugin_active('theme-my-login/theme-my-login.php')) {
+    add_action( 'login_footer', 'startup_footer_scripts' );
+}
