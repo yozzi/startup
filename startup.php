@@ -16,13 +16,11 @@ if ( ! defined( 'WPINC' ) ) {
 //Include this to check if a plugin is activated with is_plugin_active
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-// Settings
-define("STARTUP_VERSION", "1.0");
-define("STARTUP_FOOTER", "Vous utilisez l'application <a href=\"http://startup.yozz.net\" target=\"_blank\">StartUp</a> développée par <a href=\"http://yozz.net\" target=\"_blank\">yozz.net</a>");
-
 //require('inc/updater.php');
 
 //require('inc/options.php');
+
+require('settings.php');
 
 require('inc/notices.php');
 
@@ -48,7 +46,7 @@ require('inc/display.php');
 
 require('inc/settings.php');
 
-//require('inc/help.php');
+require('inc/help.php');
 
-//require('inc/wall.php');
+require('inc/wall.php');
 ?>

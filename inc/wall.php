@@ -131,7 +131,9 @@ function startup_wall_init(){
 </script>
 <?php }
 
-add_action('admin_menu', 'startup_wall');
+if ( $wall ){
+    add_action('admin_menu', 'startup_wall');
+}
 
 function startup_add_menu_icon_wall(){ ?>
     <style>
@@ -142,4 +144,6 @@ function startup_add_menu_icon_wall(){ ?>
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_add_menu_icon_wall' );
+if ( $wall ){
+    add_action( 'admin_head', 'startup_add_menu_icon_wall' );
+}

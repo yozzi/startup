@@ -1,6 +1,6 @@
 <?php
 
-if ( wp_get_theme() == 'StartUp Reloaded' ) {
+if ( wp_get_theme() == 'StartUp Reloaded' && $help ) {
 
     function startup_help(){
         add_menu_page( 'StartUp Help', 'Help', 'read', 'startup-help', 'startup_help_init' );
