@@ -1,8 +1,8 @@
 <?php
 
-$help = false;
+$help = true;
 
-$wall = false;
+$wall = true;
 
 $startup_version = "1.0";
 
