@@ -13,6 +13,15 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+//Action links
+function startup_action_links( $links ) {
+   $links[] = '<a href="'. esc_url( get_admin_url(null, 'plugin-editor.php?file=startup%2Fsettings.php&plugin=startup%2Fstartup.php') ) .'">Settings</a>';
+   $links[] = '<a href="https://github.com/yozzi" target="_blank">GitHub</a>';
+   return $links;
+}
+
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'startup_action_links' );
+
 //Include this to check if a plugin is activated with is_plugin_active
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
