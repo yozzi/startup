@@ -130,6 +130,7 @@ function startup_wall_init(){
     }
 </script>
 <?php }
+//$wall = startup_get_option( 'wall' );
 
 if ( $wall ){
     add_action('admin_menu', 'startup_wall');
