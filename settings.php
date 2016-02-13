@@ -140,7 +140,6 @@ class startup_Admin {
 			'desc' => __( 'Use wall', 'startup' ),
 			'id'   => 'wall',
 			'type' => 'checkbox',
-			'default' => true,
 		) );
         
         $cmb->add_field( array(

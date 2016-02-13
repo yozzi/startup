@@ -1,7 +1,10 @@
 <?php
 
 function startup_wall(){
-    add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_wall_init', '', 0 );
+    $wall = startup_get_option( 'wall' );
+    if ( $wall ){
+        add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_wall_init', '', 0 );
+    }
 }
 
 function startup_wall_init(){
@@ -55,6 +58,7 @@ function startup_wall_init(){
 
 
 						<div class="inside">
+                            
                             <?php if ( $bio ) { ?>
                                 <p><?php echo $bio ?></p>
                             <div style="text-align:right"><a class="button-secondary" href="<?php echo admin_url() ?>/profile.php" title="<?php _e( 'Edit' ); ?>"><?php _e( 'Edit' ); ?></a></div>
@@ -130,11 +134,8 @@ function startup_wall_init(){
     }
 </script>
 <?php }
-//$wall = startup_get_option( 'wall' );
-
-if ( $wall ){
-    add_action('admin_menu', 'startup_wall');
-}
+    
+add_action('admin_menu', 'startup_wall');
 
 function startup_add_menu_icon_wall(){ ?>
     <style>
@@ -145,6 +146,4 @@ function startup_add_menu_icon_wall(){ ?>
     </style>
 <?php }
 
-if ( $wall ){
-    add_action( 'admin_head', 'startup_add_menu_icon_wall' );
-}
+add_action( 'admin_head', 'startup_add_menu_icon_wall' );
