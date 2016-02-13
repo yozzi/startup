@@ -1,9 +1,12 @@
 <?php
 
-if ( wp_get_theme() == 'StartUp Reloaded' && $help ) {
+if ( wp_get_theme() == 'StartUp Reloaded' ) {
 
     function startup_help(){
-        add_menu_page( 'StartUp Help', 'Help', 'read', 'startup-help', 'startup_help_init' );
+        $help = startup_get_option( 'help' );
+        if ( $help ){
+            add_menu_page( 'StartUp Help', 'Help', 'read', 'startup-help', 'startup_help_init' );
+        }
     }
 
     function startup_help_init(){ ?>

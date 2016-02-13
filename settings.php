@@ -1,9 +1,4 @@
 <?php
-
-$help = true; //Enable Help menu (true, false)
-
-$wall = true; //Enable Wall menu (true, false)
-
 $product_name = 'StartUp / yozz.net'; //Your product name (string)
 
 $product_url = 'http://startup.yozz.net'; //Your product URL (string)
@@ -146,7 +141,6 @@ class startup_Admin {
 			'desc' => __( 'Show help page', 'startup' ),
 			'id'   => 'help',
 			'type' => 'checkbox',
-			'default' => true,
 		) );
 
 		$cmb->add_field( array(
