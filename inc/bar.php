@@ -72,8 +72,14 @@ add_action( 'plugins_loaded', 'startup_retirer_barre' );
 
 function startup_admin_bar_new_item() {
     global $wp_admin_bar;
-    global $product_name;
-    global $product_url;
+    $product_name = startup_get_option( 'product_name' );
+    $product_url = startup_get_option( 'product_url' );
+    if ( !$product_name ){
+        $product_name = 'StartUp / yozz.net';
+    }
+    if ( !$product_url ){
+        $product_url = 'http://startup.yozz.net';
+    }   
     $wp_admin_bar->add_menu(
         array(
             'id' => 'wp-admin-bar-startup',
@@ -82,6 +88,5 @@ function startup_admin_bar_new_item() {
         )
     );
 }
-if ( $product_name && $product_url ) {
-    add_action('wp_before_admin_bar_render', 'startup_admin_bar_new_item', 10);
-}
+
+add_action('wp_before_admin_bar_render', 'startup_admin_bar_new_item', 10);

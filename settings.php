@@ -1,12 +1,4 @@
 <?php
-$product_name = 'StartUp / yozz.net'; //Your product name (string)
-
-$product_url = 'http://startup.yozz.net'; //Your product URL (string)
-
-$startup_version = "1.0"; //Version number (string)
-
-$startup_footer = "Vous utilisez l'application <a href=\"http://startup.yozz.net\" target=\"_blank\">StartUp</a> développée par <a href=\"http://yozz.net\" target=\"_blank\">yozz.net</a>"; //Footer text (string)
-
 /**
  * CMB2 Theme Options
  * @version 0.1.0
@@ -147,28 +139,24 @@ class startup_Admin {
 			'desc' => __( 'Product name', 'startup' ),
 			'id'   => 'product_name',
 			'type' => 'text',
-			'default' => 'StartUp / yozz.net',
 		) );
         
         $cmb->add_field( array(
 			'desc' => __( 'Product url', 'startup' ),
 			'id'   => 'product_url',
 			'type' => 'text',
-			'default' => 'http://startup.yozz.net',
 		) );
         
         $cmb->add_field( array(
 			'desc' => __( 'Product version', 'startup' ),
 			'id'   => 'product_version',
 			'type' => 'text',
-			'default' => '1.0',
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Footer', 'startup' ),
-			'id'   => 'footer',
+			'desc' => __( 'Product footer', 'startup' ),
+			'id'   => 'product_footer',
 			'type' => 'text',
-			'default' => 'Vous utilisez l\'application <a href="http://startup.yozz.net" target="_blank">StartUp</a> développée par <a href="http://yozz.net" target="_blank">yozz.net</a>',
 		) );
 
 
