@@ -1,6 +1,6 @@
 <?php
 
-function startup_reloaded_admin_notice(){
+function startup_admin_notice(){
     if( !current_user_can( 'manage_options' ) ) {
         echo '<div class="error">
         <p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a>.</p>
@@ -8,7 +8,7 @@ function startup_reloaded_admin_notice(){
     }
 }
 
-add_action('admin_notices', 'startup_reloaded_admin_notice');
+add_action('admin_notices', 'startup_admin_notice');
 
 // Notice avec option Cacher
 

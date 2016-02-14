@@ -12,13 +12,13 @@
 
 /************************** Blog */
 
-function startup_reloaded_blog(){
+function startup_blog(){
     if( !current_user_can( 'publish_posts' ) ) {
-        add_menu_page( 'StartUp Blog', 'Blog', 'read', 'startup-blog', 'startup_reloaded_blog_init', '' );
+        add_menu_page( 'StartUp Blog', 'Blog', 'read', 'startup-blog', 'startup_blog_init', '' );
     }
 }
 
-function startup_reloaded_blog_init(){
+function startup_blog_init(){
     echo "
         <div class='wrap'>
             <h2>Blog</h2>
@@ -34,9 +34,9 @@ function startup_reloaded_blog_init(){
     ";
 }
 
-add_action('admin_menu', 'startup_reloaded_blog');
+add_action('admin_menu', 'startup_blog');
 
-function startup_reloaded_add_menu_icon_blog(){ ?>
+function startup_add_menu_icon_blog(){ ?>
     <style>
         #toplevel_page_startup-blog a{
             color: #555;
@@ -48,13 +48,13 @@ function startup_reloaded_add_menu_icon_blog(){ ?>
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_reloaded_add_menu_icon_blog' );
+add_action( 'admin_head', 'startup_add_menu_icon_blog' );
 
 /************************** Comments */
 
-function startup_reloaded_com(){
+function startup_com(){
     if ( !current_user_can( 'moderate_comments' )){
-        add_menu_page( 'StartUp Commentaires', 'Commentaires', 'read', 'startup-com', 'startup_reloaded_com_init' );
+        add_menu_page( 'StartUp Commentaires', 'Commentaires', 'read', 'startup-com', 'startup_com_init' );
     }
 }
 
@@ -75,9 +75,9 @@ function startup_com_init(){
     ";
 }
 
-add_action('admin_menu', 'startup_reloaded_com');
+add_action('admin_menu', 'startup_com');
 
-function startup_reloaded_add_menu_icon_com(){ ?>
+function startup_add_menu_icon_com(){ ?>
     <style>
         #toplevel_page_startup-com a{
             color: #555;
@@ -92,15 +92,15 @@ function startup_reloaded_add_menu_icon_com(){ ?>
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_reloaded_add_menu_icon_com' );
+add_action( 'admin_head', 'startup_add_menu_icon_com' );
 
 /************************** Multilingue */
 
-function startup_reloaded_multi(){
-    add_menu_page( 'StartUp Multilingue', 'Multilingue', 'read', 'startup-multi', 'startup_reloaded_multi_init' );
+function startup_multi(){
+    add_menu_page( 'StartUp Multilingue', 'Multilingue', 'read', 'startup-multi', 'startup_multi_init' );
 }
 
-function startup_reloaded_multi_init(){
+function startup_multi_init(){
     echo "
         <div class='wrap'>
             <h2>Multilingue</h2>
@@ -112,9 +112,9 @@ function startup_reloaded_multi_init(){
     ";
 }
 
-add_action('admin_menu', 'startup_reloaded_multi');
+add_action('admin_menu', 'startup_multi');
 
-function startup_reloaded_add_menu_icon_multi(){ ?>
+function startup_add_menu_icon_multi(){ ?>
     <style>
         #toplevel_page_startup-multi a{
             color: #555;
@@ -126,15 +126,15 @@ function startup_reloaded_add_menu_icon_multi(){ ?>
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_reloaded_add_menu_icon_multi' );
+add_action( 'admin_head', 'startup_add_menu_icon_multi' );
 
 /************************** Stats */
 
-function startup_reloaded_stats(){
-    add_menu_page( 'StartUp Stats', 'Statistiques', 'read', 'startup-stats', 'startup_reloaded_stats_init' );
+function startup_stats(){
+    add_menu_page( 'StartUp Stats', 'Statistiques', 'read', 'startup-stats', 'startup_stats_init' );
 }
 
-function startup_reloaded_stats_init(){
+function startup_stats_init(){
     echo "
         <div class='wrap'>
             <h2>Statistiques</h2>
@@ -153,9 +153,9 @@ function startup_reloaded_stats_init(){
     ";
 }
 
-add_action('admin_menu', 'startup_reloaded_stats');
+add_action('admin_menu', 'startup_stats');
 
-function startup_reloaded_add_menu_icon_stats(){ ?>
+function startup_add_menu_icon_stats(){ ?>
     <style>
         #toplevel_page_startup-stats a{
             color: #555;
@@ -167,4 +167,4 @@ function startup_reloaded_add_menu_icon_stats(){ ?>
     </style>
 <?php }
 
-add_action( 'admin_head', 'startup_reloaded_add_menu_icon_stats' );
+add_action( 'admin_head', 'startup_add_menu_icon_stats' );
