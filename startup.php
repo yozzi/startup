@@ -15,7 +15,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 //Action links
 function startup_action_links( $links ) {
-   $links[] = '<a href="'. esc_url( get_admin_url(null, 'plugin-editor.php?file=startup%2Fsettings.php&plugin=startup%2Fstartup.php') ) .'">Settings</a>';
+   $links[] = '<a href="'. esc_url( get_admin_url(null, 'options-general.php?page=startup_options') ) .'">Settings</a>';
    $links[] = '<a href="https://github.com/yozzi" target="_blank">GitHub</a>';
    return $links;
 }
