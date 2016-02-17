@@ -3,13 +3,13 @@
 /************************** Rediriger vers une autre page au login */
 
 function startup_login_redirect( $redirect_to, $request, $user ) {
-    //if ( is_array( $user->roles ) ) {
-        //if ( in_array( 'owner', $user->roles ) ) {
-            return admin_url( 'admin.php?page=startup-wall' );
-       // } else {
-       //     return admin_url();
-       //}
-    //}
+    $wall = startup_get_option( 'wall' );
+    if ( $wall ){
+        return admin_url( 'admin.php?page=startup-wall' );
+    } else {
+        return admin_url( 'edit.php' );
+    }
+
 }
 
 add_filter( 'login_redirect', 'startup_login_redirect', 10, 3 );
