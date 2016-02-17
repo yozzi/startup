@@ -11,6 +11,21 @@ function startup_custom_login_head() {
         echo '}';
         echo '</style>';
     }
+    
+    $logo = startup_get_option( 'product_logo' );
+    if ( $logo ){
+        echo '<style type="text/css">';
+        echo 'h1 a {';
+        echo 'background-image: url(' . $logo . ') !important;';
+        echo '}';
+        echo '</style>';
+    } else {
+        echo '<style type="text/css">';
+        echo 'h1 a {';
+        echo 'background-image: url(' . plugins_url() . '/startup/img/startup_logo.png) !important;';
+        echo '}';
+        echo '</style>';
+    }
 }
 if ( !is_plugin_active('theme-my-login/theme-my-login.php')) {
     add_action('login_head', 'startup_custom_login_head');

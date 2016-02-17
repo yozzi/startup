@@ -124,17 +124,11 @@ class startup_Admin {
 		// Set our CMB2 fields
         
         $cmb->add_field( array(
-			'desc' => __( 'Use wall', 'startup' ),
-			'id'   => 'wall',
-			'type' => 'checkbox',
+			'desc' => __( 'Product logo (should be square)', 'startup' ),
+			'id'   => 'product_logo',
+			'type' => 'file',
 		) );
         
-        $cmb->add_field( array(
-			'desc' => __( 'Show help page', 'startup' ),
-			'id'   => 'help',
-			'type' => 'checkbox',
-		) );
-
 		$cmb->add_field( array(
 			'desc' => __( 'Product name', 'startup' ),
 			'id'   => 'product_name',
@@ -157,6 +151,18 @@ class startup_Admin {
 			'desc' => __( 'Product footer', 'startup' ),
 			'id'   => 'product_footer',
 			'type' => 'text',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Use wall', 'startup' ),
+			'id'   => 'wall',
+			'type' => 'checkbox',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Show help page', 'startup' ),
+			'id'   => 'help',
+			'type' => 'checkbox',
 		) );
 
 

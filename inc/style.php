@@ -12,3 +12,21 @@ function startup_font_awesome(){ ?>
 <?php }
 
 add_action( 'admin_head', 'startup_font_awesome' );
+
+function startup_css(){
+    $logo = startup_get_option( 'product_logo' );
+        if ( $logo ){
+?>
+    <style>
+         #wp-admin-bar-site-name .ab-item {
+            background-image: url(<?php echo $logo ?>) !important;
+        }
+
+        #wp-admin-bar-site-name .ab-item:hover {
+            background-image: url(<?php echo $logo ?>) !important;
+        }
+    </style>
+<?php }
+                      }
+
+add_action( 'admin_head', 'startup_css' );
