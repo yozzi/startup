@@ -29,7 +29,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 //require('inc/options.php');
 
-require('settings.php');
+require('inc/settings.php');
 
 require('inc/notices.php');
 
@@ -53,7 +53,7 @@ require('inc/blog.php');
 
 require('inc/display.php');
 
-require('inc/settings.php');
+require('inc/conf.php');
 
 require('inc/help.php');
 

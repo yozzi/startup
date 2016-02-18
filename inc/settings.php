@@ -1,83 +1,237 @@
 <?php
+/**
+ * CMB2 Theme Options
+ * @version 0.1.0
+ */
+class startup_Admin {
 
-//Désactiver les notifications de mise-à-jour de WordPress pour les non-admin
-function startup_hide_update_notice_to_all_but_admin_users() {
-    if (!current_user_can('update_core')) {
-        remove_action( 'admin_notices', 'update_nag', 3 );
-    }
-}
+	/**
+ 	 * Option key, and option page slug
+ 	 * @var string
+ 	 */
+	private $key = 'startup_options';
 
-add_action( 'admin_head', 'startup_hide_update_notice_to_all_but_admin_users', 1 );
+	/**
+ 	 * Options page metabox id
+ 	 * @var string
+ 	 */
+	private $metabox_id = 'startup_option_metabox';
 
-//Remove emoji
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	/**
+	 * Options Page title
+	 * @var string
+	 */
+	protected $title = '';
 
-/************************** Simply Show IDs 1.3.3 */
-// Prepend the new column to the columns array
-function ssid_column($cols) {
-	$cols['ssid'] = 'ID';
-	return $cols;
-}
+	/**
+	 * Options Page hook
+	 * @var string
+	 */
+	protected $options_page = '';
 
-// Echo the ID for the new column
-function ssid_value($column_name, $id) {
-	if ($column_name == 'ssid')
-		echo $id;
-}
+	/**
+	 * Holds an instance of the object
+	 *
+	 * @var startup_Admin
+	 **/
+	private static $instance = null;
 
-function ssid_return_value($value, $column_name, $id) {
-	if ($column_name == 'ssid')
-		$value = $id;
-	return $value;
-}
-
-// Output CSS for width of new column
-function ssid_css() {
-?>
-<style type="text/css">
-	#ssid { width: 50px; } /* Simply Show IDs */
-</style>
-<?php	
-}
-
-// Actions/Filters for various tables and the css output
-function ssid_add() {
-	add_action('admin_head', 'ssid_css');
-
-	add_filter('manage_posts_columns', 'ssid_column');
-	add_action('manage_posts_custom_column', 'ssid_value', 10, 2);
-
-	add_filter('manage_pages_columns', 'ssid_column');
-	add_action('manage_pages_custom_column', 'ssid_value', 10, 2);
-
-	add_filter('manage_media_columns', 'ssid_column');
-	add_action('manage_media_custom_column', 'ssid_value', 10, 2);
-
-	add_filter('manage_link-manager_columns', 'ssid_column');
-	add_action('manage_link_custom_column', 'ssid_value', 10, 2);
-
-	add_action('manage_edit-link-categories_columns', 'ssid_column');
-	add_filter('manage_link_categories_custom_column', 'ssid_return_value', 10, 3);
-
-	foreach ( get_taxonomies() as $taxonomy ) {
-		add_action("manage_edit-${taxonomy}_columns", 'ssid_column');			
-		add_filter("manage_${taxonomy}_custom_column", 'ssid_return_value', 10, 3);
+	/**
+	 * Constructor
+	 * @since 0.1.0
+	 */
+	private function __construct() {
+		// Set our title
+		$this->title = __( 'StartUp', 'startup' );
 	}
 
-	add_action('manage_users_columns', 'ssid_column');
-	add_filter('manage_users_custom_column', 'ssid_return_value', 10, 3);
+	/**
+	 * Returns the running object
+	 *
+	 * @return startup_Admin
+	 **/
+	public static function get_instance() {
+		if( is_null( self::$instance ) ) {
+			self::$instance = new startup_Admin();
+			self::$instance->hooks();
+		}
+		return self::$instance;
+	}
 
-	add_action('manage_edit-comments_columns', 'ssid_column');
-	add_action('manage_comments_custom_column', 'ssid_value', 10, 2);
+	/**
+	 * Initiate our hooks
+	 * @since 0.1.0
+	 */
+	public function hooks() {
+		add_action( 'admin_init', array( $this, 'init' ) );
+		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
+		add_action( 'cmb2_admin_init', array( $this, 'add_options_page_metabox' ) );
+	}
+
+
+	/**
+	 * Register our setting to WP
+	 * @since  0.1.0
+	 */
+	public function init() {
+		register_setting( $this->key, $this->key );
+	}
+
+	/**
+	 * Add menu options page
+	 * @since 0.1.0
+	 */
+	public function add_options_page() {
+		$this->options_page = add_options_page( $this->title, $this->title, 'manage_options', $this->key, array( $this, 'admin_page_display' ) );
+
+		// Include CMB CSS in the head to avoid FOUC
+		add_action( "admin_print_styles-{$this->options_page}", array( 'CMB2_hookup', 'enqueue_cmb_css' ) );
+	}
+
+	/**
+	 * Admin page markup. Mostly handled by CMB2
+	 * @since  0.1.0
+	 */
+	public function admin_page_display() {
+		?>
+		<div class="wrap cmb2-options-page <?php echo $this->key; ?>">
+			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+			<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Add the options metabox to the array of metaboxes
+	 * @since  0.1.0
+	 */
+	function add_options_page_metabox() {
+
+		// hook in our save notices
+		add_action( "cmb2_save_options-page_fields_{$this->metabox_id}", array( $this, 'settings_notices' ), 10, 2 );
+
+		$cmb = new_cmb2_box( array(
+			'id'         => $this->metabox_id,
+			'hookup'     => false,
+			'cmb_styles' => false,
+			'show_on'    => array(
+				// These are important, don't remove
+				'key'   => 'options-page',
+				'value' => array( $this->key, )
+			),
+		) );
+
+		// Set our CMB2 fields
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Product logo (should be square)', 'startup' ),
+			'id'   => 'product_logo',
+			'type' => 'file',
+		) );
+        
+		$cmb->add_field( array(
+			'desc' => __( 'Product name', 'startup' ),
+			'id'   => 'product_name',
+			'type' => 'text',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Product url', 'startup' ),
+			'id'   => 'product_url',
+			'type' => 'text',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Product version', 'startup' ),
+			'id'   => 'product_version',
+			'type' => 'text',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Product footer', 'startup' ),
+			'id'   => 'product_footer',
+			'type' => 'text',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Use wall', 'startup' ),
+			'id'   => 'wall',
+			'type' => 'checkbox',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Show help page', 'startup' ),
+			'id'   => 'help',
+			'type' => 'checkbox',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Show notices', 'startup' ),
+			'id'   => 'notices',
+			'type' => 'checkbox',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Help notice', 'startup' ),
+			'id'   => 'notice_help',
+			'type' => 'text',
+		) );
+
+
+	}
+
+	/**
+	 * Register settings notices for display
+	 *
+	 * @since  0.1.0
+	 * @param  int   $object_id Option key
+	 * @param  array $updated   Array of updated fields
+	 * @return void
+	 */
+	public function settings_notices( $object_id, $updated ) {
+		if ( $object_id !== $this->key || empty( $updated ) ) {
+			return;
+		}
+
+		add_settings_error( $this->key . '-notices', '', __( 'Settings updated.', 'startup' ), 'updated' );
+		settings_errors( $this->key . '-notices' );
+	}
+
+	/**
+	 * Public getter method for retrieving protected/private variables
+	 * @since  0.1.0
+	 * @param  string  $field Field to retrieve
+	 * @return mixed          Field value or exception is thrown
+	 */
+	public function __get( $field ) {
+		// Allowed fields to retrieve
+		if ( in_array( $field, array( 'key', 'metabox_id', 'title', 'options_page' ), true ) ) {
+			return $this->{$field};
+		}
+
+		throw new Exception( 'Invalid property: ' . $field );
+	}
+
 }
 
-add_action('admin_init', 'ssid_add');
+/**
+ * Helper function to get/return the startup_Admin object
+ * @since  0.1.0
+ * @return startup_Admin object
+ */
+function startup_admin() {
+	return startup_Admin::get_instance();
+}
 
-/************************** Ajouter un lien All Settings pour l'admin */
+/**
+ * Wrapper function around cmb2_get_option
+ * @since  0.1.0
+ * @param  string  $key Options array key
+ * @return mixed        Option value
+ */
+function startup_get_option( $key = '' ) {
+	return cmb2_get_option( startup_admin()->key, $key );
+}
 
-//function startup_all_settings_link() {
-//    add_options_page(__('All Settings'), __('Adv. Settings'), 'administrator', 'options.php');
-//}
-//
-//add_action('admin_menu', 'startup_all_settings_link');
+// Get it started
+startup_admin();

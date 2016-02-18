@@ -1,10 +1,18 @@
 <?php
 
 function startup_admin_notice(){
-    if( !current_user_can( 'manage_options' ) ) {
-        echo '<div class="error">
-        <p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a>.</p>
-        </div>';
+    $notices = startup_get_option( 'notices' );
+    $help = startup_get_option( 'notice_help' );
+    if( !current_user_can( 'manage_options' ) && $notices ) {
+        if ( !$help ) {
+            echo '<div class="error">
+            <p>Besoin d\'assistance? Contactez-nous sur <a href="mailto:support@yozz.net" target="_blank">support@yozz.net</a>.</p>
+            </div>';
+        } else {
+            echo '<div class="error">
+            <p>' . $help . '</p>
+            </div>';
+        }
     }
 }
 
