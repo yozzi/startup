@@ -176,6 +176,24 @@ class startup_Admin {
 			'id'   => 'notice_help',
 			'type' => 'text',
 		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Force admin color scheme', 'startup' ),
+			'id'   => 'color',
+			'type'             => 'select',
+            'show_option_none' => true,
+            'default'          => '',
+            'options'          => array(
+                'fresh' => __( 'Fresh', 'startup' ),
+                'light' => __( 'Light', 'startup' ),
+                'blue' => __( 'Blue', 'startup' ),
+                'coffee' => __( 'Coffee', 'startup' ),
+                'ectoplasm' => __( 'Ectoplasm', 'startup' ),
+                'midnight' => __( 'Midnight', 'startup' ),
+                'ocean' => __( 'Ocean', 'startup' ),
+                'sunrise' => __( 'Sunrise', 'startup' ),
+            ),
+		) );
 
 
 	}
