@@ -38,7 +38,7 @@ if ( wp_get_theme() == 'StartUp Reloaded' ) {
         add_action( 'init', 'shortcode_ui_detection' );
     }
 
-    function startup_shortcode_ui() {
+    function startup_blog_shortcode_ui() {
 
         shortcode_ui_register_for_shortcode(
             'blog',
@@ -57,6 +57,6 @@ if ( wp_get_theme() == 'StartUp Reloaded' ) {
     };
 
     if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
-        add_action( 'init', 'startup_shortcode_ui');
+        add_action( 'init', 'startup_blog_shortcode_ui');
     }
 }
