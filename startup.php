@@ -51,7 +51,7 @@ require('inc/profile.php');
 
 require('inc/blog.php');
 
-require('inc/members.php');
+require('inc/author.php');
 
 require('inc/display.php');
 
