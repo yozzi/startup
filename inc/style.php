@@ -20,10 +20,13 @@ function startup_css(){
     <style>
          #wp-admin-bar-site-name .ab-item {
             background-image: url(<?php echo $logo ?>) !important;
+            background-position: 5px !important;
+            padding-left: 35px !important;
         }
 
         #wp-admin-bar-site-name .ab-item:hover {
             background-image: url(<?php echo $logo ?>) !important;
+            padding-left: 35px !important;
         }
     </style>
 <?php }
