@@ -83,11 +83,11 @@ add_action('admin_init', 'ssid_add');
 //add_action('admin_menu', 'startup_all_settings_link');
 
 /************************** Forcer le choix des couleurs */
-function change_admin_color($result) {
-    $color = startup_get_option( 'color' );
-    if ( $color ){
-        return $color;
-    }
-}
-    
-add_filter('get_user_option_admin_color', 'change_admin_color');
+//function change_admin_color($result) {
+//    $color = startup_get_option( 'color' );
+//    if ( $color ){
+//        return $color;
+//    }
+//}
+//    
+//add_filter('get_user_option_admin_color', 'change_admin_color');
