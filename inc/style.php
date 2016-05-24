@@ -15,6 +15,9 @@ add_action( 'admin_head', 'startup_font_awesome' );
 
 function startup_css(){
     $logo = startup_get_option( 'product_logo' );
+    $logo_top = startup_get_option( 'product_logo_top' );
+    
+    if ( $logo_top ) { $logo = $logo_top;};
         if ( $logo ){
 ?>
     <style>

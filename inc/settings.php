@@ -124,8 +124,14 @@ class startup_Admin {
 		// Set our CMB2 fields
         
         $cmb->add_field( array(
-			'desc' => __( 'Product logo (should be square)', 'startup' ),
+			'desc' => __( 'Product logo for login screen', 'startup' ),
 			'id'   => 'product_logo',
+			'type' => 'file',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Product logo for admin bar if different. Should be square and small.', 'startup' ),
+			'id'   => 'product_logo_top',
 			'type' => 'file',
 		) );
         
