@@ -14,10 +14,26 @@ function startup_login_redirect( $redirect_to, $request, $user ) {
             return admin_url( 'edit.php?post_type=page' );
         }
     }
-
 }
 
 add_filter( 'login_redirect', 'startup_login_redirect', 10, 3 );
+
+/************************** Rediriger vers une autre page quand on va sur /wp-admin */
+
+function startup_dashboard_redirect(){
+    $wall = startup_get_option( 'wall' );
+    $blog = startup_get_option( 'blog' );
+    if ( $wall ){
+        wp_redirect(admin_url('admin.php?page=startup-wall'));
+    } else {
+        if ( $blog ) {
+            wp_redirect(admin_url('edit.php'));
+        } else {
+            wp_redirect(admin_url('edit.php?post_type=page'));
+        }
+    }
+}
+add_action('load-index.php','startup_dashboard_redirect');
 
 /************************** Retirer des éléments du menu */
 
