@@ -4,10 +4,15 @@
 
 function startup_login_redirect( $redirect_to, $request, $user ) {
     $wall = startup_get_option( 'wall' );
+    $blog = startup_get_option( 'blog' );
     if ( $wall ){
         return admin_url( 'admin.php?page=startup-wall' );
     } else {
-        return admin_url( 'edit.php' );
+        if ( $blog ) {
+            return admin_url( 'edit.php' );
+        } else {
+            return admin_url( 'edit.php?post_type=page' );
+        }
     }
 
 }
@@ -71,6 +76,17 @@ function startup_remove_admin_menus (){
 }
 
 add_action('admin_menu', 'startup_remove_admin_menus');
+
+
+// Retirer le blog par page options
+function startup_post_remove () {
+    $blog = startup_get_option( 'blog' );
+    if ( !$blog ) {
+        remove_menu_page('edit.php');
+    }
+}    
+
+add_action('admin_menu', 'startup_post_remove');   //adding action for triggering function call
 
 /************************** Renommer des éléments du menu */
 
