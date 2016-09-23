@@ -8,8 +8,8 @@ function startup_wall(){
 }
 
 function startup_wall_init(){
-    $current_user = wp_get_current_user(); //grid_thumb
-    $img  = wp_get_attachment_image_src( get_user_meta( $current_user->ID, '_startup_user_avatar_id', 1 ), 'grid_thumb' );
+    $current_user = wp_get_current_user(); //col-3-square
+    $img  = wp_get_attachment_image_src( get_user_meta( $current_user->ID, '_startup_user_avatar_id', 1 ), 'col-3-square' );
     if ( !$img ) {
         $upload = true;
         $img[0] =  plugins_url( '../img/profile.png', __FILE__ );
