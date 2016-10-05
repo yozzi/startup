@@ -124,6 +124,12 @@ class startup_Admin {
 		// Set our CMB2 fields
         
         $cmb->add_field( array(
+			'desc' => __( 'Cleaner admin', 'startup' ),
+			'id'   => 'cleaner',
+			'type' => 'checkbox',
+		) );
+        
+        $cmb->add_field( array(
 			'desc' => __( 'Product logo for login screen', 'startup' ),
 			'id'   => 'product_logo',
 			'type' => 'file',
