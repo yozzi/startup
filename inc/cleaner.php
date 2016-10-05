@@ -4,6 +4,9 @@ function startup_cleaner(){
    $cleaner = startup_get_option( 'cleaner' );
    if ( $cleaner ){ ?>
         <style>
+            html, body {
+                background:#fff;
+            }
             @media screen and (min-width: 783px) {
                 #wpbody {
                     margin-top: 34px;
