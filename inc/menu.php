@@ -3,15 +3,19 @@
 /************************** Rediriger vers une autre page au login */
 
 function startup_login_redirect( $redirect_to, $request, $user ) {
+    $dashboard = startup_get_option( 'dashboard' );
     $wall = startup_get_option( 'wall' );
     $blog = startup_get_option( 'blog' );
-    if ( $wall ){
-        return admin_url( 'admin.php?page=startup-wall' );
-    } else {
-        if ( $blog ) {
-            return admin_url( 'edit.php' );
+    
+    if ( !$dashboard ){
+        if ( $wall ){
+            return admin_url( 'admin.php?page=startup-wall' );
         } else {
-            return admin_url( 'edit.php?post_type=page' );
+            if ( $blog ) {
+                return admin_url( 'edit.php' );
+            } else {
+                return admin_url( 'edit.php?post_type=page' );
+            }
         }
     }
 }
@@ -21,15 +25,19 @@ add_filter( 'login_redirect', 'startup_login_redirect', 10, 3 );
 /************************** Rediriger vers une autre page quand on va sur /wp-admin */
 
 function startup_dashboard_redirect(){
+    $dashboard = startup_get_option( 'dashboard' );
     $wall = startup_get_option( 'wall' );
     $blog = startup_get_option( 'blog' );
-    if ( $wall ){
-        wp_redirect(admin_url('admin.php?page=startup-wall'));
-    } else {
-        if ( $blog ) {
-            wp_redirect(admin_url('edit.php'));
+    
+    if ( !$dashboard ){
+        if ( $wall ){
+            wp_redirect(admin_url('admin.php?page=startup-wall'));
         } else {
-            wp_redirect(admin_url('edit.php?post_type=page'));
+            if ( $blog ) {
+                wp_redirect(admin_url('edit.php'));
+            } else {
+                wp_redirect(admin_url('edit.php?post_type=page'));
+            }
         }
     }
 }
@@ -44,7 +52,10 @@ function startup_remove_admin_menus (){
     unset($menu[4]);
     
     //Retirer le menu Tableau de bord
-    remove_menu_page('index.php'); // Dashboard tab
+    $dashboard = startup_get_option( 'dashboard' );
+    if ( !$dashboard ){
+        remove_menu_page('index.php'); // Dashboard tab
+    }
     
     if( current_user_can( 'manage_options' ) ) {
         //Retirer ICI des éléments pour l'administrateur

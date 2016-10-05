@@ -166,6 +166,12 @@ class startup_Admin {
 		) );
         
         $cmb->add_field( array(
+			'desc' => __( 'Use dashboard', 'startup' ),
+			'id'   => 'dashboard',
+			'type' => 'checkbox',
+		) );
+        
+        $cmb->add_field( array(
 			'desc' => __( 'Use blog', 'startup' ),
 			'id'   => 'blog',
 			'type' => 'checkbox',
