@@ -141,6 +141,12 @@ class startup_Admin {
 			'type' => 'file',
 		) );
         
+        $cmb->add_field( array(
+			'desc' => __( 'Full logo', 'startup' ),
+			'id'   => 'product_logo_full',
+			'type' => 'checkbox',
+		) );
+        
 		$cmb->add_field( array(
 			'desc' => __( 'Product name', 'startup' ),
 			'id'   => 'product_name',
