@@ -47,7 +47,8 @@ add_action( 'wp_before_admin_bar_render', 'startup_remove_admin_bar_links' );
 
 function startup_replace_howdy( $wp_admin_bar ) {
     $my_account=$wp_admin_bar->get_node('my-account');
-    $newtitle = str_replace( 'Salutations,', 'Vous êtes connecté en tant que', $my_account->title );            
+//    $newtitle = str_replace( 'Salutations,', 'Vous êtes connecté en tant que', $my_account->title );
+    $newtitle = str_replace( 'Salutations,', '', $my_account->title );
     $wp_admin_bar->add_node(
         array(
             'id' => 'my-account',
