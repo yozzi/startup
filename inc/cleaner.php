@@ -57,7 +57,9 @@ function startup_cleaner(){
             
 
             #adminmenu li.wp-menu-separator {
-                display: none;
+                border-bottom: 9px solid rgba(255, 255, 255, 0.5);
+                margin: 0;
+                height: 0;
             }
         </style>
     <?php }
