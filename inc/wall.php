@@ -3,7 +3,7 @@
 function startup_wall(){
     $wall = startup_get_option( 'wall' );
     if ( $wall ){
-        add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_wall_init', '', 0 );
+        add_menu_page( 'StartUp Wall', 'Wall', 'read', 'startup-wall', 'startup_wall_init', '', 3 );
     }
 }
 
