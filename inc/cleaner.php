@@ -4,14 +4,25 @@ function startup_cleaner(){
    $cleaner = startup_get_option( 'cleaner' );
    if ( $cleaner ){ ?>
         <style>
+            html.wp-toolbar{
+                padding-top: 66px;
+            }
+            
+            @media screen and (max-width: 782px){
+                html.wp-toolbar {
+                    padding-top: 46px;
+                }
+            }
+            @media screen and (max-width: 600px){
+                html.wp-toolbar {
+                    padding-top: 0;
+                }
+            }
+            
             html, body {
                 background:#fff;
             }
             @media screen and (min-width: 783px) {
-                #wpbody {
-                    margin-top: 34px;
-                }
-                
                 .dashicons, .dashicons-before:before {
                     width: 32px;
                     height: 32px;
