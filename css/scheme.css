@@ -543,3 +543,6 @@ div#wp-responsive-toggle a:before {
 .wrap .add-new-h2:hover, .wrap .page-title-action:hover {
     border-color: #048c75;
 }
+#wp-content-editor-tools {
+    background-color: #fff;
+}
