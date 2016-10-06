@@ -31,6 +31,8 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 require('inc/settings.php');
 
+require('inc/scheme.php');
+
 require('inc/cleaner.php');
 
 require('inc/notices.php');
