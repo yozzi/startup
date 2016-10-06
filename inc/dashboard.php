@@ -62,7 +62,7 @@ function register_my_dashboard_widget() {
 }
 
 function my_dashboard_widget_display() {
-    echo 'Put your instructions here';
+    echo '<p>Put your instructions here</p>';
 }
 
 add_action( 'wp_dashboard_setup', 'register_my_dashboard_widget' );
