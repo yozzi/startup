@@ -24,8 +24,19 @@ function startup_cleaner(){
                     padding: 2px 0;
                 }
             }
+            
+            #wpcontent, #wpfooter {
+                margin-left: 180px;
+            }
+            #adminmenu .wp-submenu {
+                left: 180px;
+            }
             #adminmenu {
                 margin: 0;
+            }
+            
+            #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+                width: 180px;
             }
             
             #wpadminbar {
@@ -42,6 +53,15 @@ function startup_cleaner(){
                 height: 64px;
             }
             
+            #wp-admin-bar-my-account>.ab-item:before {
+                top: 18px;
+            }
+            #wp-admin-bar-site-name .ab-item {
+                background-position: 0 20px !important;
+            }
+            #adminmenu li.wp-has-submenu.wp-not-current-submenu:hover:after {
+                top: 24px;
+            }
             
             
             

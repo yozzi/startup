@@ -23,20 +23,20 @@ function startup_css(){
             if ( $logo_full ){ ?>
                 <style>
                     #wp-admin-bar-site-name{
-                        width: 160px;
+                        width: 180px;
                         overflow:hidden;
                     }
                     
                     #wp-admin-bar-site-name .ab-item {
                         background-image: url(<?php echo $logo ?>) !important;
                         background-position: 0 !important;
-                        background-size: 160px !important;
-                        padding-left: 160px !important;
+                        background-size: 180px !important;
+                        padding-left: 180px !important;
                     }
 
                     #wp-admin-bar-site-name .ab-item:hover {
                         background-image: url(<?php echo $logo ?>) !important;
-                        padding-left: 160px !important;
+                        padding-left: 180px !important;
                     }
                 </style>
             <?php } else { ?>
