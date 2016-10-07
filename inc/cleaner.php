@@ -24,9 +24,9 @@ function startup_cleaner(){
             }
             @media screen and (min-width: 783px) {
                 .dashicons, .dashicons-before:before {
-                    width: 32px;
-                    height: 32px;
-                    font-size: 32px;
+                    width: 28px;
+                    height: 28px;
+                    font-size: 28px;
                 }
                 #adminmenu div.wp-menu-image {
                     width: 45px;
