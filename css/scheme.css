@@ -565,9 +565,7 @@ div#wp-responsive-toggle a:before {
     background-color: #fff;
 }
 
-#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img {
-    display: none;
-}
+
 /* NEUROTIS */
 
 @media screen and (min-width: 783px) {
@@ -584,4 +582,71 @@ div#wp-responsive-toggle a:before {
     a.menu-top{
         background: url('scheme/admin-button-bg.svg') no-repeat center center;
     }
+}
+
+#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img{
+
+    display: none;
+
+}
+
+#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a{
+
+    font-size: 0;
+    visibility: hidden;
+
+}
+
+#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a:before,#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a:after{
+
+      content: "\f110" !important;
+    font-family: dashicons !important;
+    font-size: 28px !important;
+    visibility: visible !important;
+
+}
+
+.welcome-panel .welcome-edit-profile::before {
+    content: "\f110";
+    top: -2px;
+}
+
+.welcome-panel .welcome-edit-vendor::before {
+    content: "\f108";
+    top: -2px;
+}
+
+.welcome-panel .welcome-add-product::before {
+    content: "\f483";
+    top: -2px;
+}
+
+.welcome-panel .welcome-view-orders::before {
+    content: "\f174";
+    top: -2px;
+}
+
+.welcome-panel .welcome-view-calendar::before {
+    content: "\f508";
+    top: -2px;
+}
+
+.welcome-panel .welcome-add-booking::before {
+    content: "\f537";
+    top: -2px;
+}
+
+.welcome-panel .welcome-view-stats::before {
+    content: "\f239";
+    top: -2px;
+}
+
+.welcome-panel .welcome-view-tutorial::before {
+    content: "\f118";
+    top: -2px;
+}
+
+.welcome-panel .welcome-add-support::before {
+    content: "\f348";
+    top: -2px;
 }

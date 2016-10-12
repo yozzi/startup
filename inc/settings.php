@@ -207,6 +207,12 @@ class startup_Admin {
 			'type' => 'text',
 		) );
         
+        $cmb->add_field( array(
+			'desc' => __( 'ID columns', 'startup' ),
+			'id'   => 'id_columns',
+			'type' => 'checkbox',
+		) );
+        
 //        $cmb->add_field( array(
 //			'desc' => __( 'Force admin color scheme', 'startup' ),
 //			'id'   => 'color',

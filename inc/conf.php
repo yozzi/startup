@@ -43,33 +43,37 @@ function ssid_css() {
 
 // Actions/Filters for various tables and the css output
 function ssid_add() {
-	add_action('admin_head', 'ssid_css');
+    $id_columns = startup_get_option( 'id_columns' );
+    
+    if ($id_columns){
+        add_action('admin_head', 'ssid_css');
 
-	add_filter('manage_posts_columns', 'ssid_column');
-	add_action('manage_posts_custom_column', 'ssid_value', 10, 2);
+        add_filter('manage_posts_columns', 'ssid_column');
+        add_action('manage_posts_custom_column', 'ssid_value', 10, 2);
 
-	add_filter('manage_pages_columns', 'ssid_column');
-	add_action('manage_pages_custom_column', 'ssid_value', 10, 2);
+        add_filter('manage_pages_columns', 'ssid_column');
+        add_action('manage_pages_custom_column', 'ssid_value', 10, 2);
 
-	add_filter('manage_media_columns', 'ssid_column');
-	add_action('manage_media_custom_column', 'ssid_value', 10, 2);
+        add_filter('manage_media_columns', 'ssid_column');
+        add_action('manage_media_custom_column', 'ssid_value', 10, 2);
 
-	add_filter('manage_link-manager_columns', 'ssid_column');
-	add_action('manage_link_custom_column', 'ssid_value', 10, 2);
+        add_filter('manage_link-manager_columns', 'ssid_column');
+        add_action('manage_link_custom_column', 'ssid_value', 10, 2);
 
-	add_action('manage_edit-link-categories_columns', 'ssid_column');
-	add_filter('manage_link_categories_custom_column', 'ssid_return_value', 10, 3);
+        add_action('manage_edit-link-categories_columns', 'ssid_column');
+        add_filter('manage_link_categories_custom_column', 'ssid_return_value', 10, 3);
 
-	foreach ( get_taxonomies() as $taxonomy ) {
-		add_action("manage_edit-${taxonomy}_columns", 'ssid_column');			
-		add_filter("manage_${taxonomy}_custom_column", 'ssid_return_value', 10, 3);
-	}
+        foreach ( get_taxonomies() as $taxonomy ) {
+            add_action("manage_edit-${taxonomy}_columns", 'ssid_column');			
+            add_filter("manage_${taxonomy}_custom_column", 'ssid_return_value', 10, 3);
+        }
 
-	add_action('manage_users_columns', 'ssid_column');
-	add_filter('manage_users_custom_column', 'ssid_return_value', 10, 3);
+        add_action('manage_users_columns', 'ssid_column');
+        add_filter('manage_users_custom_column', 'ssid_return_value', 10, 3);
 
-	add_action('manage_edit-comments_columns', 'ssid_column');
-	add_action('manage_comments_custom_column', 'ssid_value', 10, 2);
+        add_action('manage_edit-comments_columns', 'ssid_column');
+        add_action('manage_comments_custom_column', 'ssid_value', 10, 2);
+    }
 }
 
 add_action('admin_init', 'ssid_add');
@@ -83,11 +87,13 @@ Class WPAdminSlugColumn {
 	* @return void
 	*/
 	public function __construct() {
-		add_filter( 'manage_posts_columns', array( $this, 'SAC_posts' ) );
-		add_action( 'manage_posts_custom_column', array( $this, 'SAC_posts_data' ), 10, 2);
-		add_filter( 'manage_pages_columns', array( $this, 'SAC_pages' ) );
-		add_action( 'manage_pages_custom_column', array( $this, 'SAC_pages_data' ), 10, 2);
-	}
+
+            add_filter( 'manage_posts_columns', array( $this, 'SAC_posts' ) );
+            add_action( 'manage_posts_custom_column', array( $this, 'SAC_posts_data' ), 10, 2);
+            add_filter( 'manage_pages_columns', array( $this, 'SAC_pages' ) );
+            add_action( 'manage_pages_custom_column', array( $this, 'SAC_pages_data' ), 10, 2);
+
+    }
 
 	/**
 	* Adds slug to Posts column with option
