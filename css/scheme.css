@@ -612,7 +612,7 @@ div#wp-responsive-toggle a:before {
 }
 
 .welcome-panel .welcome-edit-vendor::before {
-    content: "\f108";
+    content: "\f510";
     top: -2px;
 }
 
@@ -637,7 +637,7 @@ div#wp-responsive-toggle a:before {
 }
 
 .welcome-panel .welcome-view-stats::before {
-    content: "\f239";
+    content: "\f185";
     top: -2px;
 }
 
