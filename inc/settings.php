@@ -213,6 +213,41 @@ class startup_Admin {
 			'type' => 'checkbox',
 		) );
         
+        $cmb->add_field( array(
+			'desc' => __( 'Login screen overlay color', 'startup' ),
+			'id'   => 'login_overlay',
+			'default' => '#ff4500',
+            'type' => 'colorpicker'
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Choose an image for the login screen background.', 'startup' ),
+			'id'   => 'login_01',
+			'type' => 'file',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Choose another one.', 'startup' ),
+			'id'   => 'login_02',
+			'type' => 'file',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Choose one more.', 'startup' ),
+			'id'   => 'login_03',
+			'type' => 'file',
+		) );
+        
+        $cmb->add_field( array(
+			'id'   => 'login_04',
+			'type' => 'file',
+		) );
+        
+        $cmb->add_field( array(
+			'id'   => 'login_05',
+			'type' => 'file',
+		) );
+        
 //        $cmb->add_field( array(
 //			'desc' => __( 'Force admin color scheme', 'startup' ),
 //			'id'   => 'color',

@@ -3,14 +3,12 @@
 /************************** Style de la page login */
 
 function startup_custom_login_head() {
-    if ( wp_get_theme() == 'StartUp Reloaded' ) {
-        $overlay = of_get_option( 'login_overlay' );
+        $overlay = startup_get_option( 'login_overlay' );
         echo '<style type="text/css">';
         echo '.vegas-overlay{';
         echo 'background:' . $overlay . '!important;';
         echo '}';
         echo '</style>';
-    }
     
     $logo = startup_get_option( 'product_logo' );
     if ( $logo ){
@@ -39,15 +37,13 @@ function startup_footer_scripts() {
     $login_03 = '';
     $login_04 = '';
     $login_05 = '';
-    if ( wp_get_theme() == 'StartUp Reloaded' ) {
-        $login_01 = of_get_option( 'login_01' );
-        $login_02 = of_get_option( 'login_02' );
-        $login_03 = of_get_option( 'login_03' );
-        $login_04 = of_get_option( 'login_04' );
-        $login_05 = of_get_option( 'login_05' );
-    }
+    $login_01 = startup_get_option( 'login_01' );
+    $login_02 = startup_get_option( 'login_02' );
+    $login_03 = startup_get_option( 'login_03' );
+    $login_04 = startup_get_option( 'login_04' );
+    $login_05 = startup_get_option( 'login_05' );
     
-    if ( $login_01 | $login_02 | $login_03 | $login_04 | $login_05 ) {
+    if ( $login_01 || $login_02 || $login_03 || $login_04 || $login_05 ) {
 ?>
     <script type="text/javascript">
         jQuery(function() {
