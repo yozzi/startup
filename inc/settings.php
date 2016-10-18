@@ -130,7 +130,7 @@ class startup_Admin {
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Product logo for login screen', 'startup' ),
+			'desc' => __( 'Product logo for login screen 320x180 for best results.', 'startup' ),
 			'id'   => 'product_logo',
 			'type' => 'file',
 		) );
