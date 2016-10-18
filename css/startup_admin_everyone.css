@@ -19,6 +19,12 @@
     background-repeat: no-repeat;
     background-position: 0 4px;
 }
+
+/*Polylang*/
+#wp-admin-bar-languages span.ab-icon{
+    display: none;
+}
+
 /*CMB2*/
 
 .cmb-repeat .cmb-row,
