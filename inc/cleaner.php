@@ -59,22 +59,24 @@ function startup_cleaner(){
              #adminmenuwrap {
                  width: 180px;
              }
+            
+             @media screen and (min-width: 783px) {
+                 #wpadminbar {
+                     height: 64px;
+                     border-bottom: 2px solid #fff;
+                 }
 
-             #wpadminbar {
-                 height: 64px;
-                 border-bottom: 2px solid #fff;
-             }
-
-             #wpadminbar,
-             #wpadminbar * {
-                 font-size: 13px;
-                 line-height: 64px;
-             }
-
-             #wpadminbar .quicklinks .ab-empty-item,
-             #wpadminbar .quicklinks a,
-             #wpadminbar .shortlink-input {
-                 height: 64px;
+                 #wpadminbar,
+                 #wpadminbar * {
+                     font-size: 13px;
+                     line-height: 64px;
+                 }
+            
+                 #wpadminbar .quicklinks .ab-empty-item,
+                 #wpadminbar .quicklinks a,
+                 #wpadminbar .shortlink-input {
+                     height: 64px;
+                 }
              }
 
              #wp-admin-bar-my-account>.ab-item:before {
