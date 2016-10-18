@@ -59,6 +59,20 @@ function startup_replace_howdy( $wp_admin_bar ) {
 
 add_filter( 'admin_bar_menu', 'startup_replace_howdy',25 );
 
+function startup_replace_howdy_en( $wp_admin_bar ) {
+    $my_account=$wp_admin_bar->get_node('my-account');
+//    $newtitle = str_replace( 'Salutations,', 'Vous êtes connecté en tant que', $my_account->title );
+    $newtitle = str_replace( 'Howdy,', '', $my_account->title );
+    $wp_admin_bar->add_node(
+        array(
+            'id' => 'my-account',
+            'title' => $newtitle,
+        )
+    );
+}
+
+add_filter( 'admin_bar_menu', 'startup_replace_howdy_en',25 );
+
 /************************** Retirer la barre d'admin sur frontend */
 
 function startup_retirer_barre() {
