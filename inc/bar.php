@@ -71,7 +71,7 @@ function startup_replace_howdy_en( $wp_admin_bar ) {
     );
 }
 
-add_filter( 'admin_bar_menu', 'startup_replace_howdy_en',25 );
+add_filter( 'admin_bar_menu', 'startup_replace_howdy_en', 25 );
 
 /************************** Retirer la barre d'admin sur frontend */
 
@@ -104,4 +104,4 @@ function startup_admin_bar_new_item() {
     );
 }
 
-add_action('wp_before_admin_bar_render', 'startup_admin_bar_new_item', 10);
+add_action('admin_bar_menu', 'startup_admin_bar_new_item', 31);
