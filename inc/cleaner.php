@@ -109,6 +109,10 @@ function startup_cleaner(){
                  margin: 0;
                  height: 0;
              }
+            
+            .wp-editor-tools{
+                background: transparent !important;
+            }
         </style>
     <?php }
 }
