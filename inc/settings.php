@@ -1,6 +1,6 @@
 <?php
 /**
- * CMB2 Theme Options
+ * CMB2 Plugin Options
  * @version 0.1.0
  */
 class startup_Admin {
