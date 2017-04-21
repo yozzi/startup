@@ -21,6 +21,26 @@ if ( wp_get_theme() == 'StartUp Reloaded' ) {
         return ob_get_clean();    
     }
     add_shortcode( 'blog', 'startup_blog_shortcode' );
+    
+    /************************** Sticky posts Shortcode */
+
+    function startup_sticky_shortcode( $atts ) {
+
+        // Attributes
+        $atts = shortcode_atts(array(
+                'bg' => ''
+            ), $atts);
+
+        // Code
+        ob_start();
+        if ( function_exists( 'startup_reloaded_setup' ) ) {
+            require get_template_directory() . '/template-parts/content-sticky.php';
+        } else {
+            echo 'Should <a href="https://github.com/yozzi/startup-reloaded" target="_blank">install StartUp Reloaded Theme</a> to make things happen...';
+        }
+        return ob_get_clean();    
+    }
+    add_shortcode( 'sticky', 'startup_sticky_shortcode' );
 
     // Shortcode UI
     /**
@@ -59,8 +79,27 @@ if ( wp_get_theme() == 'StartUp Reloaded' ) {
             )
         );
     };
+    
+     function startup_sticky_shortcode_ui() {
+
+        shortcode_ui_register_for_shortcode(
+            'sticky',
+            array(
+                'label' => esc_html__( 'Sticky', 'startup' ),
+                'listItemImage' => 'dashicons-sticky',
+                'attrs' => array(
+                    array(
+                        'label' => esc_html__( 'Background', 'startup' ),
+                        'attr'  => 'bg',
+                        'type'  => 'color',
+                    ),
+                ),
+            )
+        );
+    };
 
     if ( function_exists( 'shortcode_ui_register_for_shortcode' ) ) {
         add_action( 'init', 'startup_blog_shortcode_ui');
+        add_action( 'init', 'startup_sticky_shortcode_ui');
     }
 }
