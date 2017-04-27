@@ -1,6 +1,6 @@
 <?php
 
-if ( wp_get_theme() == 'StartUp Reloaded' ) {
+if (strpos(wp_get_theme(), 'StartUp') !== false) {
 
     function startup_help(){
         $help = startup_get_option( 'help' );
