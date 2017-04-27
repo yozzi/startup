@@ -12,8 +12,8 @@ body {
 }
 
 h1 a {
-/*    background-image: url(../img/startup_logo.png) !important;*/
-    background-size: 100% !important;
+    background-size: contain !important;
+    background-position: center center !important;
     width: 100% !important;
     height: 180px !important;
 }

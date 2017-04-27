@@ -3,12 +3,19 @@
 /************************** Style de la page login */
 
 function startup_custom_login_head() {
-        $overlay = startup_get_option( 'login_overlay' );
-        echo '<style type="text/css">';
-        echo '.vegas-overlay{';
-        echo 'background:' . $overlay . '!important;';
-        echo '}';
-        echo '</style>';
+    $overlay = startup_get_option( 'login_overlay' );
+    echo '<style type="text/css">';
+    echo '.vegas-overlay{';
+    echo 'background:' . $overlay . '!important;';
+    echo '}';
+    echo '</style>';
+    
+    $opacity = startup_get_option( 'login_opacity' );
+    echo '<style type="text/css">';
+    echo '.vegas-overlay{';
+    echo 'opacity:' . $opacity . '!important;';
+    echo '}';
+    echo '</style>';
     
     $logo = startup_get_option( 'product_logo' );
     if ( $logo ){

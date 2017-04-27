@@ -221,6 +221,13 @@ class startup_Admin {
 		) );
         
         $cmb->add_field( array(
+			'desc' => __( 'Login screen overlay opacity', 'startup' ),
+			'id'   => 'login_opacity',
+			'default' => '0.85',
+            'type' => 'text_small'
+		) );
+        
+        $cmb->add_field( array(
 			'desc' => __( 'Choose an image for the login screen background.', 'startup' ),
 			'id'   => 'login_01',
 			'type' => 'file',
