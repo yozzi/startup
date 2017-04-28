@@ -111,7 +111,7 @@ function startup_cleaner(){
              }
             
             .wp-editor-tools{
-                background: transparent !important;
+                background: #fff !important;
             }
             
             ul#adminmenu a.wp-has-current-submenu:after, ul#adminmenu>li.current>a.current:after {
