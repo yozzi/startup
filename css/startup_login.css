@@ -2,7 +2,7 @@ body {
     background: transparent;
 }
 
-.vegas-overlay{
+.vegas-overlay {
     background: #ff4500;
     opacity: 0.85 !important;
 }
@@ -11,11 +11,15 @@ body {
     padding: 25px 0 0 0;
 }
 
+h1 {
+    padding: 0 30px !important;
+}
+
 h1 a {
     background-size: contain !important;
     background-position: center center !important;
     width: 100% !important;
-    height: 180px !important;
+    height: 140px !important;
 }
 
 a {
