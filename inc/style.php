@@ -37,22 +37,22 @@ function startup_css(){
                         background-image: url(<?php echo $logo ?>) !important;
                         background-position: center !important;
                         background-size: contain !important;
-                        padding-left: 176px !important;
+                        padding-left: 166px !important;
                         padding-right: 0 !important;
                         height: 60px !important;
-                        margin: 2px !important;
+                        margin: 2px 7px !important;
                     }
 
                     #wp-admin-bar-site-name .ab-item:hover {
                         background-image: url(<?php echo $logo ?>) !important;
-                        padding-left: 176px !important;
+                        padding-left: 166px !important;
                     }
                 </style>
             <?php } else { ?>
                 <style>
                      #wp-admin-bar-site-name .ab-item {
                         background-image: url(<?php echo $logo ?>) !important;
-                        background-position: 6px 4px !important;
+                        background-position: 6px center !important;
                         padding-left: 36px !important;
                     }
 
@@ -66,7 +66,7 @@ function startup_css(){
 
                     <style>
                          #wp-admin-bar-site-name .ab-item {
-                            background-position: 10px 20px !important;
+                            background-position: 10px center !important;
                             padding-left: 45px !important;
                         }
 

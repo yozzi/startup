@@ -142,7 +142,7 @@ class startup_Admin {
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Full logo. Optimal size is 176x60 or 352x120 for retina support. Cleaner admin must be turned on.', 'startup' ),
+			'desc' => __( 'Full logo. Optimal size is 166x60 or 332x120 for retina support. Cleaner admin must be turned on.', 'startup' ),
 			'id'   => 'product_logo_full',
 			'type' => 'checkbox',
 		) );
