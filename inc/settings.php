@@ -147,6 +147,12 @@ class startup_Admin {
 			'type' => 'checkbox',
 		) );
         
+        $cmb->add_field( array(
+			'desc' => __( 'Product menu item', 'startup' ),
+			'id'   => 'product_menu',
+			'type' => 'checkbox',
+		) );
+        
 		$cmb->add_field( array(
 			'desc' => __( 'Product name', 'startup' ),
 			'id'   => 'product_name',
