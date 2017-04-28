@@ -114,3 +114,14 @@ function startup_footer_scripts() {
 if ( !is_plugin_active('theme-my-login/theme-my-login.php')) {
     add_action( 'login_footer', 'startup_footer_scripts' );
 }
+
+// Change logo link and title
+function startup_login_logo_url($url) {
+	return get_site_url();
+}
+add_filter( 'login_headerurl', 'startup_login_logo_url' );
+
+function startup_login_logo_title($title) {
+	return get_bloginfo( 'name' );
+}
+add_filter( 'login_headertitle', 'startup_login_logo_title' );
