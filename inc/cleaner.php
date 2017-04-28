@@ -84,7 +84,12 @@ function startup_cleaner(){
              }
 
              #wp-admin-bar-site-name .ab-item {
-                 background-position: 0 20px !important;
+                 background-position: 10px 20px !important;
+                 padding-left: 45px !important;
+             }
+            
+            #wp-admin-bar-site-name .ab-item:hover {
+                 padding-left: 45px !important;
              }
 
              #adminmenu li.wp-has-submenu.wp-not-current-submenu:hover:after {

@@ -136,13 +136,13 @@ class startup_Admin {
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Product logo for admin bar if different. Should be square and small.', 'startup' ),
+			'desc' => __( 'Product logo for admin bar if different. Optimal size is 24x24 or 48x48 for retina support.', 'startup' ),
 			'id'   => 'product_logo_top',
 			'type' => 'file',
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Full logo', 'startup' ),
+			'desc' => __( 'Full logo. Optimal size is 176x60 or 352x120 for retina support. Cleaner admin must be turned on.', 'startup' ),
 			'id'   => 'product_logo_full',
 			'type' => 'checkbox',
 		) );

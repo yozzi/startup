@@ -17,41 +17,65 @@ function startup_css(){
     $logo = startup_get_option( 'product_logo' );
     $logo_top = startup_get_option( 'product_logo_top' );
     $logo_full = startup_get_option( 'product_logo_full' );
+    $cleaner = startup_get_option( 'cleaner' );
     
     if ( $logo_top ) { $logo = $logo_top;};
         if ( $logo ){
-            if ( $logo_full ){ ?>
+            if ( $logo_full && $cleaner ){ ?>
                 <style>
                     #wp-admin-bar-site-name{
                         width: 180px;
                         overflow:hidden;
+                        background-color: #fff !important;
+                    }
+                    
+                    #wp-admin-bar-site-name:hover a{
+                        background-color: #fff !important;
                     }
                     
                     #wp-admin-bar-site-name .ab-item {
                         background-image: url(<?php echo $logo ?>) !important;
-                        background-position: 0 !important;
-                        background-size: 180px !important;
-                        padding-left: 180px !important;
+                        background-position: center !important;
+                        background-size: contain !important;
+                        padding-left: 176px !important;
+                        padding-right: 0 !important;
+                        height: 60px !important;
+                        margin: 2px !important;
                     }
 
                     #wp-admin-bar-site-name .ab-item:hover {
                         background-image: url(<?php echo $logo ?>) !important;
-                        padding-left: 180px !important;
+                        padding-left: 176px !important;
                     }
                 </style>
             <?php } else { ?>
                 <style>
                      #wp-admin-bar-site-name .ab-item {
                         background-image: url(<?php echo $logo ?>) !important;
-                        background-position: 5px !important;
-                        padding-left: 35px !important;
+                        background-position: 6px 4px !important;
+                        padding-left: 36px !important;
                     }
 
                     #wp-admin-bar-site-name .ab-item:hover {
                         background-image: url(<?php echo $logo ?>) !important;
-                        padding-left: 35px !important;
+                        padding-left: 36px !important;
                     }
                 </style>
+                   
+                <?php if ( $cleaner ){ ?>
+
+                    <style>
+                         #wp-admin-bar-site-name .ab-item {
+                            background-position: 10px 20px !important;
+                            padding-left: 45px !important;
+                        }
+
+                        #wp-admin-bar-site-name .ab-item:hover {
+                            padding-left: 45px !important;
+                        }
+                    </style>
+                <?php } ?>
+                
             <?php }
         }
     }

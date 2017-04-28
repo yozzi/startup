@@ -5,19 +5,19 @@
 }
 
 #wp-admin-bar-site-name .ab-item {
-    padding-left: 25px !important;
+    padding-left: 36px !important;
     background-image: url(../img/startup_logo2w.png) !important;
-    background-size: 25px !important;
+    background-size: 24px !important;
     background-repeat: no-repeat !important;
-    background-position: 0 4px !important;
+    background-position: 6px 4px !important;
 }
 
 #wp-admin-bar-site-name .ab-item:hover {
-    padding-left: 25px !important;
+    padding-left: 36px !important;
     background-image: url(../img/startup_logo2w.png) !important;
-    background-size: 25px;
+    background-size: 24px;
     background-repeat: no-repeat;
-    background-position: 0 4px;
+    background-position: 6px 4px;
 }
 
 /*Polylang*/
