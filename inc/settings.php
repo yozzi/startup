@@ -214,21 +214,27 @@ class startup_Admin {
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Login screen overlay color', 'startup' ),
+			'desc' => __( 'Login screen slideshow', 'startup' ),
+			'id'   => 'login_slideshow',
+			'type' => 'checkbox',
+		) );
+        
+        $cmb->add_field( array(
+			'desc' => __( 'Login screen background or slideshow overlay color', 'startup' ),
 			'id'   => 'login_overlay',
 			'default' => '#ff4500',
             'type' => 'colorpicker'
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Login screen overlay opacity', 'startup' ),
+			'desc' => __( 'Login screen slideshow overlay opacity', 'startup' ),
 			'id'   => 'login_opacity',
 			'default' => '0.85',
             'type' => 'text_small'
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Choose an image for the login screen background.', 'startup' ),
+			'desc' => __( 'Choose an image for the login screen slideshow.', 'startup' ),
 			'id'   => 'login_01',
 			'type' => 'file',
 		) );
