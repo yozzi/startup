@@ -229,14 +229,14 @@ class startup_Admin {
 			'desc' => __( 'Login screen background or slideshow overlay color', 'startup' ),
 			'id'   => 'login_overlay',
 			'default' => '#ff4500',
-            'type' => 'colorpicker'
+            'type' => 'colorpicker',
 		) );
         
         $cmb->add_field( array(
-			'desc' => __( 'Login screen slideshow overlay opacity', 'startup' ),
+			'desc' => __( 'Login screen slideshow overlay opacity (0-1)', 'startup' ),
 			'id'   => 'login_opacity',
 			'default' => '0.85',
-            'type' => 'text_small'
+            'type' => 'text_small',
 		) );
         
         $cmb->add_field( array(
